@@ -1,0 +1,43 @@
+{
+  "terraform.languageServer": {
+    "external": true,
+    "args": ["serve"]
+  },
+  "[terraform]": {
+    "editor.formatOnSave": true
+},
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.largeFileOptimizations": false,
+  "editor.minimap.enabled": false,
+  "go.formatTool": "goimports",
+  "go.autocompleteUnimportedPackages": true,
+  "go.useLanguageServer": true,
+  "gopls": {
+    "formatting.gofumpt": true
+  },
+  "go.coverageDecorator": {
+    "type": "gutter",
+    "coveredHighlightColor": "rgba(64,128,128,0.5)",
+    "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+    "coveredGutterStyle": "blockgreen",
+    "uncoveredGutterStyle": "blockred"
+  },
+  "go.coverOnSingleTest": true,
+  "go.testFlags": ["-coverpkg=./..."],
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "go.toolsManagement.autoUpdate": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "rewrap.wrappingColumn": 80,
+  "rewrap.autoWrap.enabled": false,
+  "rewrap.doubleSentenceSpacing": true,
+  "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+}
