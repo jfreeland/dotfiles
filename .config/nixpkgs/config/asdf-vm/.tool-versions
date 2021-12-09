@@ -1,6 +1,6 @@
 golang 1.17.3
 #python 3.8.3
-dep 0.5.4
+#dep 0.5.4
 nodejs 17.1.0
 terraform 1.0.11
 dive 0.9.2

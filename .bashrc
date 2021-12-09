@@ -108,6 +108,10 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
+# path
+export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:$PATH
+
+
 # completions
 shopt -s nullglob
 # TODO: I use [[]] and [] inconsistently.
@@ -118,7 +122,9 @@ if [[ -d "$HOME/.nix-profile/share/bash-completion/completions" ]]; then
 fi
 [[ -f "/usr/local/etc/bash_completion" ]] && source /usr/local/etc/bash_completion
 [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]] && source /usr/local/etc/profile.d/bash_completion.sh
+[[ -f "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && source /opt/homebrew/etc/profile.d/bash_completion.sh
 [[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
+[[ -f "/opt/homebrew/opt/asdf/asdf.sh" ]] && source /opt/homebrew/opt/asdf/asdf.sh
 [[ -f "/usr/local/opt/asdf/etc/bash_completion.d/asdf.bash" ]] && source /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 # TODO: this can't be right anymore...
@@ -144,10 +150,6 @@ fi
 
 complete -o default -F __start_kubectl kc
 complete -C $(asdf which terraform) terraform
-
-
-# path
-export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:$PATH
 
 
 # prompt

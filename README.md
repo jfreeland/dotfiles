@@ -27,13 +27,11 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 home-manager switch
 ~/.config/nixpkgs/install
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim +PlugInstall # now self bootstraps
+# open vim for bootstrap
 nvim :Copilot setup
 nvim :TSUpdate
 nvim :CocInstall coc-go
-sudo chsh -s /usr/local/bin/bash "$USER"
+sudo chsh -s (path to newer bash) "$USER"
 ```
 
 When I get around to setting up darwin-mac, there are a couple other niceties
