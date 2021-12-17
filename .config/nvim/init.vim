@@ -52,17 +52,20 @@ call plug#end()
 
 " Leader key
 let mapleader = "," " map leader to comma
-nnoremap <leader>sf :Files<CR>
 map <leader>b :Buffers<CR>
-nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>ag :Ag<CR>
+nnoremap <leader>cd :Copilot disable<CR>
+nnoremap <leader>ce :Copilot enable<CR>
+nnoremap <leader>rg :Rg<CR>
 " figure out how to use tags?
 " nnoremap <leader>t :Tags<CR>
 " figure out how to use marks?
 "nnoremap <leader>m :Marks<CR>
-nnoremap <leader>m :MaximizerToggle<CR>
-nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>mm :MaximizerToggle<CR>
+nnoremap <leader>nt :NERDTree<CR>
+nnoremap <leader>sf :Files<CR>
 nnoremap <leader>ss :split<CR>
+nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>tw :set textwidth=0<CR>
 autocmd FileType go nmap <leader>i <Plug>(go-info)
 

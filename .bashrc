@@ -97,6 +97,7 @@ export GOPROXY="proxy.golang.org,direct"
 export GOSUMDB="off"
 export GPG_TTY=$(tty)
 export SHELL=$(which bash)
+export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
 
 ## avoid duplicates
 export HISTCONTROL=ignoredups:erasedups
@@ -110,6 +111,14 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # path
 export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:$PATH
+# TODO: What problem was I trying to solve here?
+#if [[ -x "$(command -v brew)" ]]; then
+#    HOMEBREW_PATH="$(brew --prefix)"
+#    HOMEBREW_BIN="$HOMEBREW_PATH/bin"
+#    export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:$HOMEBREW_BIN:$PATH
+#else
+#    export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:$PATH
+#fi
 
 
 # completions
@@ -122,10 +131,20 @@ if [[ -d "$HOME/.nix-profile/share/bash-completion/completions" ]]; then
 fi
 [[ -f "/usr/local/etc/bash_completion" ]] && source /usr/local/etc/bash_completion
 [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]] && source /usr/local/etc/profile.d/bash_completion.sh
-[[ -f "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && source /opt/homebrew/etc/profile.d/bash_completion.sh
+if type brew &>/dev/null
+then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+  then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+    do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
+fi
 [[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
 [[ -f "/opt/homebrew/opt/asdf/asdf.sh" ]] && source /opt/homebrew/opt/asdf/asdf.sh
-[[ -f "/usr/local/opt/asdf/etc/bash_completion.d/asdf.bash" ]] && source /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 # TODO: this can't be right anymore...
 [[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc' ]] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
@@ -225,4 +244,7 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 export NIX_SHELL_PRESERVE_PROMPT=true
+# TODO: direnv being enabled is causing new sessions to print "direnv:
+# unloading" and I don't have time to dig right now.
+export DIRENV_LOG_FORMAT=
 eval "$(direnv hook bash)"
