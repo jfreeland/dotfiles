@@ -6,47 +6,55 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neovim/nvim-lspconfig'
+" languages
+Plug 'andrewstuart/vim-kubernetes'
+"Plug 'dart-lang/dart-vim-plugin'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-hclfmt'
 Plug 'fatih/vim-go'
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'pedrohdz/vim-yaml-folds'
 Plug 'plasticboy/vim-markdown'
-Plug 'airblade/vim-gitgutter'
-Plug 'airblade/vim-rooter'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'chriskempson/base16-vim'
+Plug 'towolf/vim-helm'
+
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+
+" tools
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'github/copilot.vim'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-prettier
 " :CocInstall coc-pyright
-Plug 'altercation/vim-colors-solarized'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
-Plug 'godlygeek/tabular'
-Plug 'fatih/vim-hclfmt'
+Plug 'tpope/vim-surround'
+Plug 'wakatime/vim-wakatime'
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" ui
+Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-rooter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'chriskempson/base16-vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'psliwka/vim-smoothie'
+Plug 'szw/vim-maximizer'
+Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'andrewstuart/vim-kubernetes'
-Plug 'hashivim/vim-terraform'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'terryma/vim-expand-region'
-Plug 'pedrohdz/vim-yaml-folds'
-Plug 'towolf/vim-helm'
-Plug 'wakatime/vim-wakatime'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'psliwka/vim-smoothie'
-" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'szw/vim-maximizer'
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -174,7 +182,7 @@ set backup
 set backupdir=/tmp
 set directory=/tmp
 
-syntax enable
+syntax on
 
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -185,16 +193,46 @@ set background=dark
 highlight! link SignColumn LineNr
 
 " dart things
-let dart_html_in_string=v:true
-let g:dart_style_guide = 2
-let g:dart_format_on_save = 1
+" let dart_html_in_string=v:true
+" let g:dart_style_guide = 2
+" let g:dart_format_on_save = 1
 
 " yaml things
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" not yaml things?
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_text_changed = 'never'
+
+" start https://github.com/juliosueiras/vim-terraform-completion
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" (Optional)Remove Info(Preview) window
+set completeopt-=preview
+
+" (Optional)Hide Info(Preview) window after completions
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" (Optional) Enable terraform plan to be include in filter
+let g:syntastic_terraform_tffilter_plan = 1
+
+" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+let g:terraform_completion_keys = 1
+
+" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+let g:terraform_registry_module_completion = 0
+" end https://github.com/juliosueiras/vim-terraform-completion
 
 " terraform
 let g:terraform_align=1

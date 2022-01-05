@@ -39,5 +39,6 @@
   "rewrap.wrappingColumn": 80,
   "rewrap.autoWrap.enabled": false,
   "rewrap.doubleSentenceSpacing": true,
-  "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+  "terminal.integrated.shell.osx": "/opt/homebrew/bin/bash",
+  "python.insidersChannel": "weekly"
 }
