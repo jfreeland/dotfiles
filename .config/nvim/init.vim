@@ -28,6 +28,7 @@ Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-prettier
 " :CocInstall coc-pyright
@@ -74,6 +75,7 @@ nnoremap <leader>nt :NERDTree<CR>
 nnoremap <leader>sf :Files<CR>
 nnoremap <leader>ss :split<CR>
 nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>tt :TagbarToggle<CR>
 nnoremap <leader>tw :set textwidth=0<CR>
 autocmd FileType go nmap <leader>i <Plug>(go-info)
 
