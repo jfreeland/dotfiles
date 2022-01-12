@@ -47,6 +47,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'chriskempson/base16-vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jmckiern/vim-venter'
 Plug 'junegunn/vim-easy-align'
 Plug 'psliwka/vim-smoothie'
 Plug 'szw/vim-maximizer'
@@ -79,6 +80,7 @@ nnoremap <leader>ss :split<CR>
 nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>tt :TagbarToggle<CR>
 nnoremap <leader>tw :set textwidth=0<CR>
+nnoremap <leader>vt :VenterToggle<CR>
 autocmd FileType go nmap <leader>i <Plug>(go-info)
 
 "nnoremap <C-p> :GFiles<CR>

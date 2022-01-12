@@ -84,6 +84,8 @@ bind '\C-w:unix-filename-rubout'
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export CLICOLOR=1
+# TODO: https://gehrcke.de/2022/11/gcloud-on-python-3-10-module-collections-has-no-attribute-mapping/
+export CLOUDSDK_PYTHON="/usr/bin/python2"
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export EDITOR=$(which nvim)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --follow --glob "!{.git,node_modules,vendor}/*" 2> /dev/null'
@@ -111,14 +113,10 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # path
 export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:$PATH
-# TODO: What problem was I trying to solve here?
-#if [[ -x "$(command -v brew)" ]]; then
-#    HOMEBREW_PATH="$(brew --prefix)"
-#    HOMEBREW_BIN="$HOMEBREW_PATH/bin"
-#    export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:$HOMEBREW_BIN:$PATH
-#else
-#    export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:$PATH
-#fi
+
+
+# tools
+[[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
 
 
 # completions
@@ -134,6 +132,10 @@ fi
 if type brew &>/dev/null
 then
   HOMEBREW_PREFIX="$(brew --prefix)"
+  # TODO: This is a tool, not a completion.
+  [[ -f "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh" ]] && source "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
+  [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+  [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
   then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -143,12 +145,6 @@ then
     done
   fi
 fi
-[[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
-[[ -f "/opt/homebrew/opt/asdf/asdf.sh" ]] && source /opt/homebrew/opt/asdf/asdf.sh
-
-# TODO: this can't be right anymore...
-[[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc' ]] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-[[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc' ]] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 
 [[ -x "$(command -v kind)" ]] && source <(kind completion bash)
 [[ -x "$(command -v kubectl)" ]] && source <(kubectl completion bash)
