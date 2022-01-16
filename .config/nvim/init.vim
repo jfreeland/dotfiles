@@ -249,7 +249,7 @@ let g:terraform_fmt_on_save=1
 
 " tablines?
 nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nnoremap <C-M> :bprev<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1

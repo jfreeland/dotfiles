@@ -1,4 +1,4 @@
-# shellcheck shell=bash disable=SC1091
+# shellcheck shell=bash disable=SC1090,SC1091
 
 
 # If not running interacative don't do anything
