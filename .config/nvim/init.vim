@@ -32,7 +32,7 @@ Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-prettier
 " :CocInstall coc-pyright
-Plug 'neovim/nvim-lspconfig'
+" Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
@@ -49,6 +49,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jmckiern/vim-venter'
 Plug 'junegunn/vim-easy-align'
+Plug 'ojroques/nvim-bufdel'
 Plug 'psliwka/vim-smoothie'
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -62,25 +63,33 @@ call plug#end()
 
 " Leader key
 let mapleader = "," " map leader to comma
-map <leader>b :Buffers<CR>
-nnoremap <leader>ag :Ag<CR>
-nnoremap <leader>cd :Copilot disable<CR>
-nnoremap <leader>ce :Copilot enable<CR>
-nnoremap <leader>gd <Plug>(coc-definition)
-nnoremap <leader>gr <Plug>(coc-references)
+map <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>ag :Ag<CR>
+nnoremap <silent> <leader>bd :BufDel<CR>
+nnoremap <silent> <leader>cd :Copilot disable<CR>
+nnoremap <silent> <leader>ce :Copilot enable<CR>
+nnoremap <silent> <leader>gd <Plug>(coc-definition)
+nnoremap <silent> <leader>gr <Plug>(coc-references)
+nnoremap <silent> <leader>lc :lclose<CR>
+nnoremap <silent> <leader>lo :lopen<CR>
 " figure out how to use tags?
 " nnoremap <leader>t :Tags<CR>
 " figure out how to use marks?
 "nnoremap <leader>m :Marks<CR>
-nnoremap <leader>mm :MaximizerToggle<CR>
-nnoremap <leader>nt :NERDTree<CR>
-nnoremap <leader>rg :Rg<CR>
-nnoremap <leader>sf :Files<CR>
-nnoremap <leader>ss :split<CR>
-nnoremap <leader>sv :vsplit<CR>
-nnoremap <leader>tt :TagbarToggle<CR>
-nnoremap <leader>tw :set textwidth=0<CR>
+nnoremap <silent> <leader>mm :MaximizerToggle<CR>
+nnoremap <silent> <leader>nt :NERDTree<CR>
+nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <silent> <leader>rr :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>sf :Files<CR>
+nnoremap <silent> <leader>ss :split<CR>
+nnoremap <silent> <leader>sv :vsplit<CR>
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+nnoremap <silent> <leader>tw :set textwidth=0<CR>
 nnoremap <leader>vt :VenterToggle<CR>
+nnoremap <silent> <Space><Up> :resize -2<CR>
+nnoremap <silent> <Space><Down> :resize +2<CR>
+nnoremap <silent> <Space><Left> :vertical resize -2<CR>
+nnoremap <silent> <Space><Right> :vertical resize +2<CR>
 autocmd FileType go nmap <leader>i <Plug>(go-info)
 
 "nnoremap <C-p> :GFiles<CR>
@@ -326,6 +335,6 @@ let g:symbols_outline = {
     \ "lsp_blacklist": [],
 \ }
 
-lua << EOF
-require'lspconfig'.pyright.setup{}
-EOF
+"lua << EOF
+"require'lspconfig'.pyright.setup{}
+"EOF

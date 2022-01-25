@@ -1,6 +1,6 @@
 # current basic setup
 
-## NIX
+## nix
 
 This gets me a good part of the way to a setup Mac host.  Lots of room for
 improvement in many aspects.
@@ -14,7 +14,6 @@ ln -s configs/dotfiles/.config .
 ln -s configs/dotfiles/.ssh .
 ln -s configs/dotfiles/.tmux .
 ln -s configs/dotfiles/.tmux.conf .
-ln -s configs/dotfiles/.vimrc .
 # add ssh key to agent and then
 git clone https://github.com/jfreeland/private.git configs/private
 ln -s configs/private/.gitconfig .
@@ -32,6 +31,11 @@ nvim :Copilot setup
 nvim :TSUpdate
 nvim :CocInstall coc-go
 sudo chsh -s (path to newer bash) "$USER"
+```
+
+Have to explicitly install the `vagrant-vmware-desktop` plugin:
+```bash
+vagrant plugin install vagrant-vmware-desktop
 ```
 
 When I get around to setting up darwin-mac, there are a couple other niceties
