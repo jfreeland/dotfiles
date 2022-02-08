@@ -33,6 +33,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-prettier
 " :CocInstall coc-pyright
 " Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim' " Required for telescope
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
@@ -68,6 +70,12 @@ nnoremap <silent> <leader>ag :Ag<CR>
 nnoremap <silent> <leader>bd :BufDel<CR>
 nnoremap <silent> <leader>cd :Copilot disable<CR>
 nnoremap <silent> <leader>ce :Copilot enable<CR>
+nnoremap <silent> <leader>cc :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader>cr :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent> <leader>gd <Plug>(coc-definition)
 nnoremap <silent> <leader>gr <Plug>(coc-references)
 nnoremap <silent> <leader>lc :lclose<CR>
@@ -79,12 +87,11 @@ nnoremap <silent> <leader>lo :lopen<CR>
 nnoremap <silent> <leader>mm :MaximizerToggle<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
-nnoremap <silent> <leader>rr :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> <leader>sf :Files<CR>
 nnoremap <silent> <leader>ss :split<CR>
 nnoremap <silent> <leader>sv :vsplit<CR>
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
-nnoremap <silent> <leader>tw :set textwidth=0<CR>
+nnoremap <leader>tw :set textwidth=0<CR>
 nnoremap <leader>vt :VenterToggle<CR>
 nnoremap <silent> <Space><Up> :resize -2<CR>
 nnoremap <silent> <Space><Down> :resize +2<CR>

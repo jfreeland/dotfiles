@@ -181,6 +181,11 @@ tf_ws_prompt() {
     fi
   fi
 }
+virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV)) "
+  fi
+}
 git_prompt() {
   if [[ $(git branch 2>/dev/null | grep '^*' | colrm 1 2) != "" ]]; then
     echo "("$(git branch 2>/dev/null | grep '^*' | colrm 1 2)")"
@@ -189,9 +194,9 @@ git_prompt() {
 ## TODO: add kube-ps1 and kube-tmuxp back in the mix?
 if [[ $HOSTNAME =~ "-" ]]; then
     PS1_HOST="work"
-    PS1="["'$(date +"%H:%M:%S")'"] \[\e]0;\u@${PS1_HOST}: \w\a\]\[\033[01;32m\]\u@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@${PS1_HOST}: \w\a\]\[\033[01;32m\]\u@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
 else
-    PS1="["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
 fi
 
 
