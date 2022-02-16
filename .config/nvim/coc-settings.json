@@ -18,5 +18,7 @@
 			"settings": {}
 		}
 	},
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "yaml"],
+  "coc.preferences.formatOnSaveFiletypes": ["py", "css", "Markdown", "yaml"],
+	"python.linting.flake8Enabled": true,
+	"python.formatting.provider": "black"
 }
