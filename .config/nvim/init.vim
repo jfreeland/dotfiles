@@ -101,6 +101,9 @@ nnoremap <silent> <Space><Left> :vertical resize -2<CR>
 nnoremap <silent> <Space><Right> :vertical resize +2<CR>
 autocmd FileType go nmap <leader>i <Plug>(go-info)
 
+" https://github.com/fatih/vim-go/wiki/Tutorial#cover-it
+" GoCoverage
+
 "nnoremap <C-p> :GFiles<CR>
 
 " -------------------------------------------------------------------------------------------------

@@ -16,4 +16,5 @@ else
 fi
 
 info "running homebrew-bundle"
-HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=y brew bundle --global | indent
+#HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=y brew bundle --global | indent
+ACCEPT_EULA=y brew bundle --global | indent
