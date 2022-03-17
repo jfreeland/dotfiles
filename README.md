@@ -26,8 +26,10 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/master.t
 nix-channel --update
 nix-shell '<home-manager>' -A install
 home-manager switch
+bash
 ~/.config/nixpkgs/install
 # open vim for bootstrap
+nvim setup wakatime after the fact
 nvim :Copilot setup
 nvim :TSUpdate
 nvim :CocInstall coc-go
