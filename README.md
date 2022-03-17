@@ -11,6 +11,7 @@ git clone https://github.com/jfreeland/dotfiles.git configs/dotfiles
 ln -s configs/dotfiles/.bash_profile .
 ln -s configs/dotfiles/.bashrc .
 ln -s configs/dotfiles/.config .
+ln -s configs/dotfiles/.git-template .
 ln -s configs/dotfiles/.ssh .
 ln -s configs/dotfiles/.tmux .
 ln -s configs/dotfiles/.tmux.conf .

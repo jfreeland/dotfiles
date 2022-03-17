@@ -79,6 +79,7 @@ nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent> <leader>gd <Plug>(coc-definition)
+nnoremap gp `[v`]
 nnoremap <silent> <leader>gr <Plug>(coc-references)
 nnoremap <silent> <leader>lc :lclose<CR>
 nnoremap <silent> <leader>lo :lopen<CR>
@@ -89,6 +90,7 @@ nnoremap <silent> <leader>lo :lopen<CR>
 nnoremap <silent> <leader>mm :MaximizerToggle<CR>
 nnoremap <silent> <leader>nt :NERDTree<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <leader>S <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <silent> <leader>sf :Files<CR>
 nnoremap <silent> <leader>ss :split<CR>
 nnoremap <silent> <leader>sv :vsplit<CR>
