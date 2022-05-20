@@ -112,11 +112,11 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 # path
-export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:$PATH
+export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
 
 # tools
-[[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
+#[[ -f "/usr/local/opt/asdf/asdf.sh" ]] && source /usr/local/opt/asdf/asdf.sh
 
 
 # completions
@@ -133,7 +133,7 @@ if type brew &>/dev/null
 then
   HOMEBREW_PREFIX="$(brew --prefix)"
   # TODO: This is a tool, not a completion.
-  [[ -f "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh" ]] && source "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
+  #[[ -f "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh" ]] && source "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]

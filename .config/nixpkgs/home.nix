@@ -8,7 +8,6 @@
   home.homeDirectory = "/Users/joey";
 
   imports = [
-    ./config/home-manager/asdf-vm.nix
     ./config/home-manager/direnv.nix
     ./config/home-manager/fzf.nix
     ./config/home-manager/gnupg.nix
