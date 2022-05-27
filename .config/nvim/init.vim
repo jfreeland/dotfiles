@@ -78,6 +78,7 @@ nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent> <leader>fp :let @*=expand("%:p")<cr>
 nnoremap <silent> <leader>gd <Plug>(coc-definition)
 nnoremap gp `[v`]
 nnoremap <silent> <leader>gr <Plug>(coc-references)

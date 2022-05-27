@@ -3,7 +3,7 @@ conan 1.45.0
 consul 1.11.1
 dive 0.9.2
 golang 1.17.3
-go-swagger v0.25.0
+go-swagger 0.25.0
 kind 0.11.1
 helmfile 0.143.0
 helm 3.7.2
