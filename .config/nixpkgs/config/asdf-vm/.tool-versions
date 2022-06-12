@@ -9,10 +9,11 @@ helmfile 0.143.0
 helm 3.7.2
 mysql 8.0.27
 nodejs 17.1.0
-packer 1.7.8
+packer 1.8.1
 python 3.10.1
 redis-cli 6.2.6
 terraform 1.0.11
 terraform-ls 0.19.0
 vault 1.9.1
 waypoint 0.6.3
+buf 1.5.0
