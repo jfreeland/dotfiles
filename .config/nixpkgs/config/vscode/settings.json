@@ -40,5 +40,11 @@
   "rewrap.autoWrap.enabled": false,
   "rewrap.doubleSentenceSpacing": true,
   "terminal.integrated.shell.osx": "/opt/homebrew/bin/bash",
-  "python.insidersChannel": "weekly"
+  "python.insidersChannel": "weekly",
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  }
 }

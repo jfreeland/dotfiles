@@ -6,6 +6,7 @@
 
   home.username = "joey";
   home.homeDirectory = "/Users/joey";
+  home.stateVersion = "21.11";
 
   imports = [
     ./config/home-manager/direnv.nix

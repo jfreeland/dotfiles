@@ -20,6 +20,7 @@ git clone https://github.com/jfreeland/private.git configs/private
 ln -s configs/private/.gitconfig .
 ln -s configs/private/.gitconfig-personal .
 ln -s configs/private/.private.bash .
+ln -s ~/.config/nixpkgs/config/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
