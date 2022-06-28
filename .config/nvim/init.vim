@@ -25,7 +25,7 @@ Plug 'juliosueiras/vim-terraform-completion'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
