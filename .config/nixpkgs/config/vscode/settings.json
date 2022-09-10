@@ -1,11 +1,12 @@
 {
-  "terraform.languageServer": {
-    "external": true,
-    "args": ["serve"]
-  },
+  "terraform.languageServer.enable": true,
+  "terraform.languageServer.args": [ "serve" ],
   "[terraform]": {
     "editor.formatOnSave": true
-},
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.inlineSuggest.enabled": true,
@@ -39,12 +40,15 @@
   "rewrap.wrappingColumn": 80,
   "rewrap.autoWrap.enabled": false,
   "rewrap.doubleSentenceSpacing": true,
-  "terminal.integrated.shell.osx": "/opt/homebrew/bin/bash",
-  "python.insidersChannel": "weekly",
+  "terminal.integrated.defaultProfile.osx": "bash",
   "github.copilot.enable": {
     "*": false,
     "yaml": false,
     "plaintext": false,
     "markdown": false
-  }
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "prettier.eslintIntegration": true,
+  "prettier.printWidth": 120
 }
