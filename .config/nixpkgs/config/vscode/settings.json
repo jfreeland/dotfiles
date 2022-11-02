@@ -1,12 +1,13 @@
 {
   "terraform.languageServer.enable": true,
-  "terraform.languageServer.args": [ "serve" ],
+  "terraform.languageServer.args": ["serve"],
   "[terraform]": {
     "editor.formatOnSave": true
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "editor.codeActionsOnSave": true,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.inlineSuggest.enabled": true,
@@ -47,8 +48,14 @@
     "plaintext": false,
     "markdown": false
   },
-  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "prettier.eslintIntegration": true,
-  "prettier.printWidth": 120
+  "prettier.printWidth": 120,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[python]": {}
 }
