@@ -50,6 +50,11 @@ One of the options I have stashed around for my notes is:
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true # Mac press and hold for accents
 ```
 
+Some other things:
+```bash
+go get github.com/cosmtrek/air
+```
+
 # Linux
 
 Need to spend some more time here.
