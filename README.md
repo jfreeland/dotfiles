@@ -30,10 +30,9 @@ home-manager switch
 bash
 ~/.config/nixpkgs/install
 # open vim for bootstrap
-nvim setup wakatime after the fact
-nvim :Copilot setup
-nvim :TSUpdate
-nvim :CocInstall coc-go
+# setup astronvim from https://astronvim.github.io/
+ln -s configs/dotfiles/.config/nvim-lua-user/init.vim .config/nvim/lua/user
+# setup nvim wakatime
 sudo chsh -s (path to newer bash) "$USER"
 ```
 
