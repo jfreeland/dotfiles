@@ -62,6 +62,5 @@
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[python]": {
-    "editor.formatOnType": true
   }
 }

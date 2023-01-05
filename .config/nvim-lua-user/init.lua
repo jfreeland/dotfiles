@@ -242,7 +242,10 @@ local config = {
 
       {
           "psliwka/vim-smoothie",
-          "wakatime/vim-wakatime"
+          "wakatime/vim-wakatime",
+          "bronson/vim-trailing-whitespace",
+          "tpope/vim-sleuth",
+          "fatih/vim-go"
       },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
