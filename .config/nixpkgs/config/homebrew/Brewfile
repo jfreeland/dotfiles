@@ -216,4 +216,5 @@ cask "zoom"
 
 mas "Amphetamine", id: 937984704
 mas "Magnet", id: 441258766
+#mas "UTC Time", id: 1538245904
 mas "WireGuard", id: 1451685025
