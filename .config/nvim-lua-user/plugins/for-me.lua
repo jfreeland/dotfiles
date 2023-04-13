@@ -18,5 +18,9 @@ return {
   {
     "fatih/vim-go",
     opts = {},
+  },
+  {
+    "mrjones2014/smart-splits.nvim",
+    opts = {},
   }
 }
