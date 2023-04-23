@@ -63,5 +63,6 @@
   "[python]": {
     "editor.formatOnType": true
   },
-  "git.openRepositoryInParentFolders": "never"
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.colorTheme": "Default Dark+"
 }

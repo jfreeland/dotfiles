@@ -226,6 +226,16 @@ function goup() {
     num=$( expr $num - 1 )
   done
 }
+function pyup() {
+    python -m venv venv
+    cat <<EOT > .envrc
+#!/usr/bin/env bash
+
+source venv/bin/activate
+EOT
+    direnv allow
+    python -m pip install --upgrade pip
+}
 
 # include private config
 [[ -f "$HOME/.private.bash" ]] && source "$HOME"/.private.bash
