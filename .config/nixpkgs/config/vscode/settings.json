@@ -64,5 +64,6 @@
     "editor.formatOnType": true
   },
   "git.openRepositoryInParentFolders": "never",
-  "workbench.colorTheme": "Default Dark+"
+  "workbench.colorTheme": "Default Dark+",
+  "zig.zls.path": "/Users/jfreeland/Library/Application Support/Code - Insiders/User/globalStorage/ziglang.vscode-zig/zls_install/zls"
 }
