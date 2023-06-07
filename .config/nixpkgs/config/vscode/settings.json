@@ -4,6 +4,9 @@
   "[terraform]": {
     "editor.formatOnSave": true
   },
+  "[hcl]": {
+    "editor.formatOnSave": true
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

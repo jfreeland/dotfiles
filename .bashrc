@@ -209,6 +209,7 @@ alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
 alias ll="ls -lag"
+alias pipup="python -m pip install --upgrade pip"
 alias vi=nvim
 alias vimdiff="nvim -d"
 alias watch="watch "
