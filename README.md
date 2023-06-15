@@ -54,6 +54,10 @@ Some other things:
 go get github.com/cosmtrek/air
 ```
 
+Check out these things some day:
+* https://getfleek.dev/
+* https://github.com/DeterminateSystems/nix-installer
+
 # Linux
 
 Need to spend some more time here.
