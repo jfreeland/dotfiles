@@ -158,9 +158,10 @@ cask "alfred"
 cask "amazon-chime"
 cask "appcleaner"
 cask "authy"
-#cask "brave-browser"
+cask "balenaetcher"
 cask "blockblock"
 cask "bloomrpc"
+#cask "brave-browser"
 #cask "burp-suite" # owasp
 #cask "ccmenu" # waypoint?
 cask "charles"
