@@ -1,0 +1,8 @@
+brew "ag"
+brew "awscli"
+brew "bash"
+brew "bash-completion@2"
+brew "neovim"
+brew "speedtest-cli"
+brew "wakatime-cli"
+brew "watch"

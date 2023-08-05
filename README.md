@@ -20,6 +20,7 @@ git clone https://github.com/jfreeland/private.git configs/private
 ln -s configs/private/.gitconfig .
 ln -s configs/private/.gitconfig-personal .
 ln -s configs/private/.private.bash .
+ln -s configs/private/.wakatime.cfg .
 ln -s ~/.config/nixpkgs/config/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
@@ -58,6 +59,12 @@ Check out these things some day:
 * https://getfleek.dev/
 * https://github.com/DeterminateSystems/nix-installer
 
-# Linux
+# Ubuntu
 
 Need to spend some more time here.
+
+```bash
+ln -s .config/nixpkgs/config/homebrew/Brewfile-ubnt .Brewfile
+# install tailscale, https://tailscale.com/download/linux/ubuntu-2204
+# exit node, https://tailscale.com/kb/1103/exit-nodes/?tab=linux
+```
