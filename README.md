@@ -67,4 +67,5 @@ Need to spend some more time here.
 ln -s .config/nixpkgs/config/homebrew/Brewfile-ubnt .Brewfile
 # install tailscale, https://tailscale.com/download/linux/ubuntu-2204
 # exit node, https://tailscale.com/kb/1103/exit-nodes/?tab=linux
+sudo apt install xorg openbox xdg-utils
 ```
