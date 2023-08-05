@@ -226,6 +226,7 @@ cask "visual-studio-code-insiders"
 cask "whatsapp"
 cask "whatsyoursign"
 cask "wireshark"
+cask "xquartz"
 cask "yubico-yubikey-manager"
 cask "zoom"
 
