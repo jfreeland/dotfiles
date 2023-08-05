@@ -117,7 +117,7 @@ export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/s
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # x11 forwarding
-if ["$(uname)" == "Darwin"]; then
+if [ "$(uname)" == "Darwin" ]; then
     export DISPLAY=:0
 fi
 
