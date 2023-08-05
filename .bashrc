@@ -230,14 +230,14 @@ function goup() {
   done
 }
 function pyup() {
-    python -m venv venv
+    python3 -m venv venv
     cat <<EOT > .envrc
 #!/usr/bin/env bash
 
 source venv/bin/activate
 EOT
     direnv allow
-    python -m pip install --upgrade pip
+    python3 -m pip install --upgrade pip
 }
 
 # include private config
