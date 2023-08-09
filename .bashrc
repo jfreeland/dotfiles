@@ -85,7 +85,7 @@ bind '\C-w:unix-filename-rubout'
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export CLICOLOR=1
 # TODO: https://gehrcke.de/2022/11/gcloud-on-python-3-10-module-collections-has-no-attribute-mapping/
-export CLOUDSDK_PYTHON="/usr/bin/python2"
+#export CLOUDSDK_PYTHON="/usr/bin/python2"
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export EDITOR=$(which nvim)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --follow --glob "!{.git,node_modules,vendor}/*" 2> /dev/null'
