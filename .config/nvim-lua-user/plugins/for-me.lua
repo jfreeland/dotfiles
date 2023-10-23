@@ -36,5 +36,11 @@ return {
     lazy = false,
     config = function() end,
     opts = {},
+  },
+  {
+    "tell-k/vim-autopep8",
+    lazy = false,
+    config = function() end,
+    opts = {},
   }
 }
