@@ -72,6 +72,11 @@ function sshagent_init {
 
 sshagent_init
 
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+fi
 
 # environment
 ## use vi mode for bash
