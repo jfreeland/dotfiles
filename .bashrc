@@ -161,6 +161,7 @@ fi
 [[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME"/.asdf/asdf.sh
 [[ -f "$HOME/.asdf/completions/asdf.bash" ]] && source "$HOME"/.asdf/completions/asdf.bash
 [[ -f "$HOME/.fzf.bash" ]] && source "$HOME"/.fzf.bash
+[[ -f /usr/share/doc/fzf/examples/key-bindings.bash ]] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # nix fzf
 if command -v fzf-share >/dev/null; then
