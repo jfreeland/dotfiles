@@ -92,13 +92,13 @@ export CLICOLOR=1
 # TODO: https://gehrcke.de/2022/11/gcloud-on-python-3-10-module-collections-has-no-attribute-mapping/
 #export CLOUDSDK_PYTHON="/usr/bin/python2"
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-export EDITOR=$(which nvim)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --follow --glob "!{.git,node_modules,vendor}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=auto
 export GO_SRC_DIR="$HOME/go/src"
 # TODO: Should be conditional.  I've let containers reduce my exposure surface.
-export GOOS="darwin"
+#export GOOS=$(uname -s)
+#export GOARCH=$(uname -m)
 export GOPATH="$HOME/go"
 export GOPROXY="proxy.golang.org,direct"
 export GOSUMDB="off"
@@ -125,6 +125,8 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 if [ "$(uname)" == "Darwin" ]; then
     export DISPLAY=:0
 fi
+
+export EDITOR=$(which nvim)
 
 # completions
 shopt -s nullglob

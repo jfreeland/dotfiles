@@ -32,7 +32,7 @@ bash
 ~/.config/nixpkgs/install
 # open vim for bootstrap
 # setup astronvim from https://astronvim.github.io/
-# incorrect: ln -s configs/dotfiles/.config/nvim-lua-user/init.vim .config/nvim/lua/user
+# ln -s ~/configs/dotfiles/.config/nvim-lua-user ~/configs/dotfiles/.config/nvim/lua/user
 # setup nvim wakatime
 sudo chsh -s (path to newer bash) "$USER"
 ```
