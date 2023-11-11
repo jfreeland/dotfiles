@@ -1,6 +1,6 @@
 .config/*
+!.config/home-manager
 !.config/nix
-!.config/nixpkgs
 !.config/nvim-lua-user
 
 .ssh/*

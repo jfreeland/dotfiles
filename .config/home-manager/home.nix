@@ -4,8 +4,8 @@
   # let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  home.username = "joey";
-  home.homeDirectory = "/Users/joey";
+  home.username = "jfreeland";
+  home.homeDirectory = "/Users/jfreeland";
   home.stateVersion = "21.11";
 
   imports = [
