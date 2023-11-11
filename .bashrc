@@ -173,7 +173,7 @@ fi
 
 complete -o default -F __start_kubectl kc
 complete -C $(asdf which terraform) terraform
-complete -C $(asdf which boundary) boundary
+#complete -C $(asdf which boundary) boundary
 
 
 # prompt
