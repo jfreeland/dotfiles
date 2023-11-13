@@ -13,7 +13,7 @@
     ./config/home-manager/fzf.nix
     ./config/home-manager/gnupg.nix
     ./config/home-manager/homebrew.nix
-    ./config/home-manager/iterm2.nix
+    # ./config/home-manager/iterm2.nix
     ./config/home-manager/xdg.nix
     ./config/home-manager/vscode.nix
   ];
