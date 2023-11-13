@@ -1,5 +1,6 @@
 # shellcheck shell=bash disable=SC2003,SC1090,SC1091,SC2046,SC2063,SC2086,SC2155,SC2027
 
+#set -x
 
 # If not running interacative don't do anything
 [ -z "$PS1" ] && return
