@@ -219,7 +219,6 @@ alias ag="ag -f"
 alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias cless="less -r"
 alias cmore="more -r"
-alias jfr="cd ~/go/src/github.com/jfreeland"
 alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
