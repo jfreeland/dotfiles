@@ -30,10 +30,10 @@ nix-shell '<home-manager>' -A install
 home-manager switch
 bash
 ~/.config/nixpkgs/install
-# open vim for bootstrap
-# setup astronvim from https://astronvim.github.io/
-# ln -s ~/configs/dotfiles/.config/nvim-lua-user ~/configs/dotfiles/.config/nvim/lua/user
+# install astronvim from https://astronvim.github.io/
+ln -s ~/configs/dotfiles/.config/nvim-lua-user ~/configs/dotfiles/.config/nvim/lua/user
 # setup nvim wakatime
+# setup devbox
 sudo chsh -s (path to newer bash) "$USER"
 ```
 
@@ -68,4 +68,10 @@ ln -s .config/nixpkgs/config/homebrew/Brewfile-ubnt .Brewfile
 # install tailscale, https://tailscale.com/download/linux/ubuntu-2204
 # exit node, https://tailscale.com/kb/1103/exit-nodes/?tab=linux
 sudo apt install xorg openbox xdg-utils gnupg2
+```
+
+# Other
+
+```bash
+kubectl krew install oidc-login
 ```

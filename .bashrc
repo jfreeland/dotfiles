@@ -154,6 +154,7 @@ then
   fi
 fi
 
+[[ -x "$(command -v devbox)" ]] && source <(devbox completion bash)
 [[ -x "$(command -v kind)" ]] && source <(kind completion bash)
 [[ -x "$(command -v kubectl)" ]] && source <(kubectl completion bash)
 [[ -x "$(command -v helm)" ]] && source <(helm completion bash)
