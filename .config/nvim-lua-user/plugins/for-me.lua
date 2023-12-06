@@ -14,13 +14,19 @@ return {
     opts = {},
   },
   {
-   "bronson/vim-trailing-whitespace",
+    "bronson/vim-trailing-whitespace",
     lazy = false,
     config = function() end,
     opts = {},
   },
   {
     "tpope/vim-sleuth",
+    lazy = false,
+    config = function() end,
+    opts = {},
+  },
+  {
+    "tpope/vim-fugitive",
     lazy = false,
     config = function() end,
     opts = {},
