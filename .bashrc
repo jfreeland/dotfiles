@@ -118,7 +118,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 # path
-export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:~/.dotnet/tools:~/.dapr/bin:$PATH
 
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -141,9 +141,10 @@ fi
 [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]] && source /usr/local/etc/profile.d/bash_completion.sh
 if type brew &>/dev/null
 then
-  HOMEBREW_PREFIX="$(brew --prefix)"
+  export HOMEBREW_PREFIX="$(brew --prefix)"
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+  [[ -f "${HOMEBREW_PREFIX}/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/share/kube-ps1.sh"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
   then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -165,7 +166,9 @@ fi
 [[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME"/.asdf/asdf.sh
 [[ -f "$HOME/.asdf/completions/asdf.bash" ]] && source "$HOME"/.asdf/completions/asdf.bash
 [[ -f "$HOME/.fzf.bash" ]] && source "$HOME"/.fzf.bash
-[[ -f /usr/share/doc/fzf/examples/key-bindings.bash ]] && source /usr/share/doc/fzf/examples/key-bindings.bash
+[[ -f '/opt/homebrew/opt/fzf/shell/completion.bash' ]] && source /opt/homebrew/opt/fzf/shell/completion.bash
+[[ -f '/opt/homebrew/opt/fzf/shell/key-bindings.bash' ]] && source /opt/homebrew/opt/fzf/shell/key-bindings.bash
+[[ -f '/usr/share/doc/fzf/examples/key-bindings.bash' ]] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # nix fzf
 if command -v fzf-share >/dev/null; then
@@ -203,11 +206,12 @@ git_prompt() {
   fi
 }
 ## TODO: add kube-ps1 and kube-tmuxp back in the mix?
-if [[ $HOSTNAME =~ "-" ]]; then
+if [[ $HOSTNAME =~ "USM" ]]; then
+    PS1_USER="joey"
     PS1_HOST="work"
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@${PS1_HOST}: \w\a\]\[\033[01;32m\]\u@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(kube_ps1)$(nix_prompt)'" > "
 else
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(kube_ps1)$(nix_prompt)'" > "
 fi
 
 
@@ -268,5 +272,15 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 export NIX_SHELL_PRESERVE_PROMPT=true
 # TODO: direnv being enabled is causing new sessions to print "direnv:
 # unloading" and I don't have time to dig right now.
+# https://jackma.com/2019/11/23/one-kubectl-context-per-shell-session/
+# kubeconfig per session
+file="$(mktemp -t "kubectx.XXXXXX")"
+export KUBECONFIG=~/.kube/config
+export KUBECONFIG="${file}:${KUBECONFIG}"
+cat <<EOF >"${file}"
+apiVersion: v1
+kind: Config
+current-context: ""
+EOF
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook bash)"
