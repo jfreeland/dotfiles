@@ -48,5 +48,11 @@ return {
     lazy = false,
     config = function() end,
     opts = {},
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function() end,
+    opts = {},
   }
 }

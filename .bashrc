@@ -118,7 +118,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 # path
-export PATH=~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:~/.dotnet/tools:~/.dapr/bin:$PATH
+export PATH=~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -220,6 +220,8 @@ ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 [[ -f /usr/local/bin/exa ]] && alias ls=exa
 
 alias ag="ag -f"
+alias assume=". assume"
+alias awswhoami="aws sts get-caller-identity"
 #alias awsp="source _awsp"
 alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias cless="less -r"
