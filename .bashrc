@@ -182,6 +182,16 @@ complete -C $(asdf which terraform) terraform
 
 
 # prompt
+aws_profile_prompt() {
+    if [[ "$AWS_PROFILE" != "" ]]; then
+        echo "($AWS_PROFILE)"
+    fi
+}
+aws_region_prompt() {
+    if [[ "$AWS_DEFAULT_REGION" != "" ]]; then
+        echo "($AWS_DEFAULT_REGION)"
+    fi
+}
 nix_prompt() {
     if [[ $IN_NIX_SHELL != "" ]]; then
         # TODO: Want the directory name where I originally started the nix shell.
@@ -209,9 +219,9 @@ git_prompt() {
 if [[ $HOSTNAME =~ "USM" ]]; then
     PS1_USER="joey"
     PS1_HOST="work"
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(kube_ps1)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
 else
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(kube_ps1)$(nix_prompt)'" > "
+    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
 fi
 
 
@@ -230,6 +240,7 @@ alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
 alias ll="ls -lag"
+alias mp=multipass
 alias pipup="python -m pip install --upgrade pip"
 alias vi=nvim
 alias vimdiff="nvim -d"
