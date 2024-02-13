@@ -1,5 +1,8 @@
 # shellcheck shell=bash disable=SC2003,SC1090,SC1091,SC2046,SC2063,SC2086,SC2155,SC2027
 
+# TODO: I probably don't actually want this, but need to fix it when I have time:
+# ln -s /dev/null /Users/josephfreeland/.local/state/nvim/lsp.log
+
 #set -x
 
 # If not running interacative don't do anything
@@ -237,6 +240,7 @@ alias awswhoami="aws sts get-caller-identity"
 alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias cless="less -r"
 alias cmore="more -r"
+alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
@@ -251,6 +255,14 @@ alias watch="watch "
 # random functions
 function aws-list-instances() {
 	aws ec2 describe-instances --region $1 --output=json | jq '.Reservations[].Instances[] | .InstanceId + ", " + .InstanceType + ", " + .PrivateDnsName + ", " + .PublicDnsName + ", " + .Placement.AvailabilityZone'
+}
+
+function kctxd() {
+    if [[ -z "$1" ]]; then
+        kubectl config set current-context none --kubeconfig ~/.kube/config
+    else
+        kubectl config set current-context $1 --kubeconfig ~/.kube/config
+    fi
 }
 
 function goup() {
