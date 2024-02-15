@@ -237,9 +237,10 @@ alias ag="ag -f"
 alias assume=". assume"
 alias awswhoami="aws sts get-caller-identity"
 #alias awsp="source _awsp"
-alias date_tag='date +timestamp_%Y%m%d%H%M%S'
+alias brewup="ACCEPT_EULA=y brew bundle --global | indent"
 alias cless="less -r"
 alias cmore="more -r"
+alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias kc=kubectl
 alias kctx=kubectx
