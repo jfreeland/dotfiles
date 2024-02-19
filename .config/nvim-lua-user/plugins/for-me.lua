@@ -54,5 +54,15 @@ return {
     lazy = false,
     config = function() end,
     opts = {},
+  },
+  -- https://github.com/cloudlena/dotfiles/blob/523295c1d9afe69df0618fa2881eb805807312e8/nvim/.config/nvim/lua/plugins/diff_directories.lua
+  -- TODO: revisit, don't follow this rabit hole right now
+  {
+    "will133/vim-dirdiff",
+    lazy = false,
+    config = function()
+      vim.g.DirDiffExcludes = ".git,.terraform"
+    end,
+    opts = {},
   }
 }

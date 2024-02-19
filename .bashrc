@@ -257,7 +257,6 @@ alias watch="watch "
 function aws-list-instances() {
 	aws ec2 describe-instances --region $1 --output=json | jq '.Reservations[].Instances[] | .InstanceId + ", " + .InstanceType + ", " + .PrivateDnsName + ", " + .PublicDnsName + ", " + .Placement.AvailabilityZone'
 }
-
 function kctxd() {
     if [[ -z "$1" ]]; then
         kubectl config set current-context none --kubeconfig ~/.kube/config
@@ -265,7 +264,6 @@ function kctxd() {
         kubectl config set current-context $1 --kubeconfig ~/.kube/config
     fi
 }
-
 function goup() {
   num=$1
   while [ $num -ne 0  ];do
@@ -282,6 +280,13 @@ source venv/bin/activate
 EOT
     direnv allow
     python3 -m pip install --upgrade pip
+}
+function dirdiff()
+{
+    # Shell-escape each path:
+    DIR1=$(printf '%q' "$1"); shift
+    DIR2=$(printf '%q' "$1"); shift
+    nvim $@ -c "DirDiff $DIR1 $DIR2"
 }
 
 # include private config
