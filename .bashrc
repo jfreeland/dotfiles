@@ -257,6 +257,15 @@ alias watch="watch "
 function aws-list-instances() {
 	aws ec2 describe-instances --region $1 --output=json | jq '.Reservations[].Instances[] | .InstanceId + ", " + .InstanceType + ", " + .PrivateDnsName + ", " + .PublicDnsName + ", " + .Placement.AvailabilityZone'
 }
+function awsr() {
+    if [ $# -eq 1 ]; then
+        export AWS_REGION="$1"
+        export AWS_DEFAULT_REGION="$1"
+        echo "AWS_REGION and AWS_DEFAULT_REGION set to $1"
+    else
+        echo "Usage: awsr <region>"
+    fi
+}
 function kctxd() {
     if [[ -z "$1" ]]; then
         kubectl config set current-context none --kubeconfig ~/.kube/config
