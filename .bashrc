@@ -107,7 +107,6 @@ export GOPATH="$HOME/go"
 export GOPROXY="proxy.golang.org,direct"
 export GOSUMDB="off"
 export GPG_TTY=$(tty)
-export SHELL=$(which bash)
 export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
 
 ## avoid duplicates
@@ -325,3 +324,4 @@ current-context: ""
 EOF
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook bash)"
+export SHELL=$(which bash)
