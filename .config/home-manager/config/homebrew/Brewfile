@@ -107,6 +107,7 @@ brew "kubie"
 brew "kubernetes-cli"
 brew "lazygit"
 #brew "libpq"
+brew "localstack/tap/localstack-cli"
 brew "lua"
 brew "mas"
 brew "mdcat"
@@ -261,6 +262,7 @@ cask "wireshark"
 #cask "zoom"
 
 mas "Amphetamine", id: 937984704
+mas "Clocker", id: 1056643111
 mas "GIPHY Capture", id: 668208984
 mas "Magnet", id: 441258766
 mas "UTC Time", id: 1538245904
