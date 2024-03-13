@@ -64,5 +64,11 @@ return {
       vim.g.DirDiffExcludes = ".git,.terraform"
     end,
     opts = {},
+  },
+  {
+    "towolf/vim-helm",
+    lazy = false,
+    config = function() end,
+    opts = {},
   }
 }
