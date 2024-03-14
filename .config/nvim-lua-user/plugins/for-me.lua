@@ -70,5 +70,11 @@ return {
     lazy = false,
     config = function() end,
     opts = {},
+  },
+  {
+    "cappyzawa/starlark.vim",
+    lazy = false,
+    config = function() end,
+    opts = {},
   }
 }

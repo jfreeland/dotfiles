@@ -1,4 +1,5 @@
 -- https://github.com/AstroNvim/user_example/blob/main/init.lua
+require("user.autocmds")
 return {
   -- Configure AstroNvim updates
   updater = {
