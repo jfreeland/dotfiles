@@ -232,6 +232,7 @@ fi
 ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 [[ -f /usr/local/bin/exa ]] && alias ls=exa
 
+alias acd=argocd
 alias ag="ag -f"
 alias assume=". assume"
 alias awswhoami="aws sts get-caller-identity"

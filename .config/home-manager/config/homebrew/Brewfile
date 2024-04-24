@@ -15,6 +15,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "humanlogio/homebrew-tap"
+tap "inkdrop-org/inkdrop-visualizer"
 tap "mkchoi212/fac", "https://github.com/mkchoi212/fac.git"
 tap "microsoft/mssql-release", "https://github.com/Microsoft/homebrew-mssql-release"
 tap "mutagen-io/mutagen"
@@ -91,6 +92,7 @@ brew "httpie"
 brew "iftop"
 brew "ipcalc"
 brew "iperf3"
+brew "inkdrop-visualizer"
 #brew "irssi"
 #brew "jid"
 brew "jless"
@@ -266,6 +268,7 @@ cask "wireshark"
 mas "Amphetamine", id: 937984704
 mas "Clocker", id: 1056643111
 mas "GIPHY Capture", id: 668208984
+mas "Hidden Bar", id: 1452453066
 mas "Magnet", id: 441258766
 mas "UTC Time", id: 1538245904
 mas "WireGuard", id: 1451685025
