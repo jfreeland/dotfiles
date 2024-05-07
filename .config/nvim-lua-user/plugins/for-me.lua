@@ -49,8 +49,14 @@ return {
     config = function() end,
     opts = {},
   },
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   config = function() end,
+  --   opts = {},
+  -- },
   {
-    "github/copilot.vim",
+    "Exafunction/codeium.vim",
     lazy = false,
     config = function() end,
     opts = {},
