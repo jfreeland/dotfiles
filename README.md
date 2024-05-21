@@ -2,7 +2,7 @@
 
 ## nix
 
-This gets me a good part of the way to a setup Mac host.  Lots of room for
+This gets me a good part of the way to a setup Mac host. Lots of room for
 improvement in many aspects.
 
 ```bash
@@ -31,13 +31,16 @@ home-manager switch
 bash
 ~/.config/nixpkgs/install
 # install astronvim from https://astronvim.github.io/
-ln -s ~/configs/dotfiles/.config/nvim-lua-user ~/configs/dotfiles/.config/nvim/lua/user
+git clone https://github.com/AstroNvim/template ~/.config/nvim
+ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/community.lua ~/.config/nvim/lua/plugins/
+ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/for-me.lua ~/.config/nvim/lua/plugins/
 # setup nvim wakatime
 # setup devbox
 sudo chsh -s (path to newer bash) "$USER"
 ```
 
 Have to explicitly install the `vagrant-vmware-desktop` plugin:
+
 ```bash
 vagrant plugin install vagrant-vmware-desktop
 ```
@@ -46,18 +49,21 @@ When I get around to setting up darwin-mac, there are a couple other niceties
 here https://github.com/jacobbednarz/j/blob/main/darwin.nix.
 
 One of the options I have stashed around for my notes is:
+
 ```bash
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true # Mac press and hold for accents
 ```
 
 Some other things:
+
 ```bash
 go get github.com/cosmtrek/air
 ```
 
 Check out these things some day:
-* https://getfleek.dev/
-* https://github.com/DeterminateSystems/nix-installer
+
+- https://getfleek.dev/
+- https://github.com/DeterminateSystems/nix-installer
 
 # Ubuntu
 

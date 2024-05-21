@@ -2,6 +2,7 @@
 !.config/home-manager
 !.config/nix
 !.config/nvim-lua-user
+!.config/astronvim4
 
 .ssh/*
 !.ssh/config
