@@ -326,3 +326,4 @@ EOF
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook bash)"
 export SHELL=$(which bash)
+. "$HOME/.cargo/env"

@@ -141,6 +141,7 @@ brew "qemu"
 brew "redis"
 brew "ripgrep"
 brew "rs/tap/dnstrace"
+brew "scc"
 # TODO: https://gist.github.com/emmakat/2226e3e5bc94678da77ba7a62c93a9e2
 #brew "secretive"
 brew "shellcheck"
