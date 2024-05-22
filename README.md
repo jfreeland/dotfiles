@@ -32,6 +32,7 @@ bash
 ~/.config/nixpkgs/install
 # install astronvim from https://astronvim.github.io/
 git clone https://github.com/AstroNvim/template ~/.config/nvim
+ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/astrocore.lua ~/.config/nvim/lua/plugins/
 ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/community.lua ~/.config/nvim/lua/plugins/
 ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/for-me.lua ~/.config/nvim/lua/plugins/
 # setup nvim wakatime
