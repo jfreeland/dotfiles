@@ -147,6 +147,7 @@ then
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
   [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   [[ -f "${HOMEBREW_PREFIX}/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/share/kube-ps1.sh"
+  [[ -f "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
   then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -327,3 +328,5 @@ export DIRENV_LOG_FORMAT=
 eval "$(direnv hook bash)"
 export SHELL=$(which bash)
 . "$HOME/.cargo/env"
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+#eval "$(atuin init bash)"
