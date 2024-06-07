@@ -10,79 +10,85 @@
 
 # ssh-agent
 function sshagent_findsockets {
-    # TODO: This should actually be /private/tmp on Mac.  Clearly not adding
-    # value.  There's probably a better way.
-    find /tmp -uid "$(id -u)" -type s -name agent.\* 2>/dev/null
+	# TODO: This should actually be /private/tmp on Mac.  Clearly not adding
+	# value.  There's probably a better way.
+	find /tmp -uid "$(id -u)" -type s -name agent.\* 2>/dev/null
 }
 
 function sshagent_testsocket {
-    if [ ! -x "$(which ssh-add)" ] ; then
-        echo "ssh-add is not available; agent testing aborted"
-        return 1
-    fi
+	if [ ! -x "$(which ssh-add)" ]; then
+		echo "ssh-add is not available; agent testing aborted"
+		return 1
+	fi
 
-    if [ X"$1" != X ] ; then
-        export SSH_AUTH_SOCK=$1
-    fi
+	if [ X"$1" != X ]; then
+		export SSH_AUTH_SOCK=$1
+	fi
 
-    if [ X"$SSH_AUTH_SOCK" = X ] ; then
-        return 2
-    fi
+	if [ X"$SSH_AUTH_SOCK" = X ]; then
+		return 2
+	fi
 
-    if [ -S "$SSH_AUTH_SOCK" ] ; then
-        ssh-add -l > /dev/null
-        if [ $? = 2 ] ; then
-            echo "Socket $SSH_AUTH_SOCK is dead!  Deleting!"
-            rm -f "$SSH_AUTH_SOCK"
-            return 4
-        else
-            return 0
-        fi
-    else
-        echo "$SSH_AUTH_SOCK is not a socket!"
-        return 3
-    fi
+	if [ -S "$SSH_AUTH_SOCK" ]; then
+		ssh-add -l >/dev/null
+		if [ $? = 2 ]; then
+			echo "Socket $SSH_AUTH_SOCK is dead!  Deleting!"
+			rm -f "$SSH_AUTH_SOCK"
+			return 4
+		else
+			return 0
+		fi
+	else
+		echo "$SSH_AUTH_SOCK is not a socket!"
+		return 3
+	fi
 }
 
 function sshagent_init {
-    # ssh agent sockets can be attached to a ssh daemon process or an
-    # ssh-agent process.
+	# ssh agent sockets can be attached to a ssh daemon process or an
+	# ssh-agent process.
 
-    AGENTFOUND=0
+	AGENTFOUND=0
 
-    # Attempt to find and use the ssh-agent in the current environment
-    if sshagent_testsocket ; then AGENTFOUND=1 ; fi
+	# Attempt to find and use the ssh-agent in the current environment
+	if sshagent_testsocket; then AGENTFOUND=1; fi
 
-    # If there is no agent in the environment, search /tmp for
-    # possible agents to reuse before starting a fresh ssh-agent
-    # process.
-    if [ $AGENTFOUND = 0 ] ; then
-        for agentsocket in $(sshagent_findsockets) ; do
-            if [ $AGENTFOUND != 0 ] ; then break ; fi
-            if sshagent_testsocket "$agentsocket" ; then AGENTFOUND=1 ; fi
-        done
-    fi
+	# If there is no agent in the environment, search /tmp for
+	# possible agents to reuse before starting a fresh ssh-agent
+	# process.
+	if [ $AGENTFOUND = 0 ]; then
+		for agentsocket in $(sshagent_findsockets); do
+			if [ $AGENTFOUND != 0 ]; then break; fi
+			if sshagent_testsocket "$agentsocket"; then AGENTFOUND=1; fi
+		done
+	fi
 
-    # If at this point we still haven't located an agent, it's time to
-    # start a new one
-    if [ $AGENTFOUND = 0 ] ; then
-        eval "$(ssh-agent)"
-    fi
+	# If at this point we still haven't located an agent, it's time to
+	# start a new one
+	if [ $AGENTFOUND = 0 ]; then
+		eval "$(ssh-agent)"
+	fi
 
-    # Clean up
-    unset AGENTFOUND
-    unset agentsocket
+	# Clean up
+	unset AGENTFOUND
+	unset agentsocket
 }
 
 sshagent_init
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
+	. "${HOME}/.gpg-agent-info"
+	export GPG_AGENT_INFO
+	export SSH_AUTH_SOCK
 fi
 
 # environment
+
+# Ghostty shell integration
+if [ -n "$GHOSTTY_RESOURCES_DIR" ]; then
+	builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 ## use vi mode for bash
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
@@ -118,7 +124,6 @@ shopt -s histappend
 ## after each command, save and reload history
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-
 # path
 export PATH=~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
@@ -126,18 +131,19 @@ export PATH=~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # x11 forwarding
 if [ "$(uname)" == "Darwin" ]; then
-    export DISPLAY=:0
+	export DISPLAY=:0
 fi
 
+# editor
 export EDITOR=$(which nvim)
 
 # completions
 shopt -s nullglob
 # TODO: I use [[]] and [] inconsistently.
 if [[ -d "$HOME/.nix-profile/share/bash-completion/completions" ]]; then
-    for i in "$HOME"/.nix-profile/share/bash-completion/completions/*; do
-        source "$i"
-    done
+	for i in "$HOME"/.nix-profile/share/bash-completion/completions/*; do
+		source "$i"
+	done
 fi
 [[ -f "/usr/local/etc/bash_completion" ]] && source /usr/local/etc/bash_completion
 [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]] && source /usr/local/etc/profile.d/bash_completion.sh
@@ -176,61 +182,59 @@ fi
 
 # nix fzf
 if command -v fzf-share >/dev/null; then
-    source "$(fzf-share)/key-bindings.bash"
-    source "$(fzf-share)/completion.bash"
+	source "$(fzf-share)/key-bindings.bash"
+	source "$(fzf-share)/completion.bash"
 fi
 
 complete -o default -F __start_kubectl kc
 complete -C $(asdf which terraform) terraform
 #complete -C $(asdf which boundary) boundary
 
-
 # prompt
 aws_profile_prompt() {
-    if [[ "$AWS_PROFILE" != "" ]]; then
-        echo "($AWS_PROFILE)"
-    fi
+	if [[ "$AWS_PROFILE" != "" ]]; then
+		echo "($AWS_PROFILE)"
+	fi
 }
 aws_region_prompt() {
-    if [[ "$AWS_DEFAULT_REGION" != "" ]]; then
-        echo "($AWS_DEFAULT_REGION)"
-    fi
+	if [[ "$AWS_DEFAULT_REGION" != "" ]]; then
+		echo "($AWS_DEFAULT_REGION)"
+	fi
 }
 nix_prompt() {
-    if [[ $IN_NIX_SHELL != "" ]]; then
-        # TODO: Want the directory name where I originally started the nix shell.
-        echo "(nix)"
-    fi
+	if [[ $IN_NIX_SHELL != "" ]]; then
+		# TODO: Want the directory name where I originally started the nix shell.
+		echo "(nix)"
+	fi
 }
 tf_ws_prompt() {
-  if [ -f ".terraform/environment" ]; then
-    if [[ $(cat .terraform/environment) != "default" ]]; then
-      echo "("$(cat .terraform/environment)")"
-    fi
-  fi
+	if [ -f ".terraform/environment" ]; then
+		if [[ $(cat .terraform/environment) != "default" ]]; then
+			echo "("$(cat .terraform/environment)")"
+		fi
+	fi
 }
 virtual_env() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "($(basename $VIRTUAL_ENV)) "
-  fi
+	if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+		echo "($(basename $VIRTUAL_ENV)) "
+	fi
 }
 git_prompt() {
-  if [[ $(git branch 2>/dev/null | grep '^*' | colrm 1 2) != "" ]]; then
-    echo "("$(git branch 2>/dev/null | grep '^*' | colrm 1 2)")"
-  fi
+	if [[ $(git branch 2>/dev/null | grep '^*' | colrm 1 2) != "" ]]; then
+		echo "("$(git branch 2>/dev/null | grep '^*' | colrm 1 2)")"
+	fi
 }
 ## TODO: add kube-ps1 and kube-tmuxp back in the mix?
 if [[ $HOSTNAME =~ "USM" ]]; then
-    PS1_USER="joey"
-    PS1_HOST="work"
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
+	PS1_USER="joey"
+	PS1_HOST="work"
+	PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
 else
-    PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
+	PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
 fi
 
-
 # aliases
-ls --color=auto &> /dev/null && alias ls='ls --color=auto'
+ls --color=auto &>/dev/null && alias ls='ls --color=auto'
 [[ -f /usr/local/bin/exa ]] && alias ls=exa
 
 alias acd=argocd
@@ -253,50 +257,47 @@ alias vi=nvim
 alias vimdiff="nvim -d"
 alias watch="watch "
 
-
 # random functions
 function aws-list-instances() {
 	aws ec2 describe-instances --region $1 --output=json | jq '.Reservations[].Instances[] | .InstanceId + ", " + .InstanceType + ", " + .PrivateDnsName + ", " + .PublicDnsName + ", " + .Placement.AvailabilityZone'
 }
 function awsr() {
-    if [ $# -eq 1 ]; then
-        export AWS_REGION="$1"
-        export AWS_DEFAULT_REGION="$1"
-        echo "AWS_REGION and AWS_DEFAULT_REGION set to $1"
-    else
-        echo "Usage: awsr <region>"
-    fi
+	if [ $# -eq 1 ]; then
+		export AWS_REGION="$1"
+		export AWS_DEFAULT_REGION="$1"
+		echo "AWS_REGION and AWS_DEFAULT_REGION set to $1"
+	else
+		echo "Usage: awsr <region>"
+	fi
 }
 function kctxd() {
-    if [[ -z "$1" ]]; then
-        kubectl config set current-context none --kubeconfig ~/.kube/config
-    else
-        kubectl config set current-context $1 --kubeconfig ~/.kube/config
-    fi
+	if [[ -z "$1" ]]; then
+		kubectl config set current-context none --kubeconfig ~/.kube/config
+	else
+		kubectl config set current-context $1 --kubeconfig ~/.kube/config
+	fi
 }
 function goup() {
-  num=$1
-  while [ $num -ne 0  ];do
-    cd ..
-    num=$( expr $num - 1 )
-  done
+	num=$1
+	while [ $num -ne 0 ]; do
+		cd ..
+		num=$(expr $num - 1)
+	done
 }
 function pyup() {
-    python3 -m venv venv
-    cat <<EOT > .envrc
-#!/usr/bin/env bash
-
+	python3 -m venv venv
+	cat <<EOT >.envrc
 source venv/bin/activate
 EOT
-    direnv allow
-    python3 -m pip install --upgrade pip
+	direnv allow
 }
-function dirdiff()
-{
-    # Shell-escape each path:
-    DIR1=$(printf '%q' "$1"); shift
-    DIR2=$(printf '%q' "$1"); shift
-    nvim $@ -c "DirDiff $DIR1 $DIR2"
+function dirdiff() {
+	# Shell-escape each path:
+	DIR1=$(printf '%q' "$1")
+	shift
+	DIR2=$(printf '%q' "$1")
+	shift
+	nvim "$@" -c "DirDiff $DIR1 $DIR2"
 }
 
 # include private config
@@ -305,10 +306,9 @@ function dirdiff()
 # include work config
 [[ -f "$HOME/.workrc.bash" ]] && source "$HOME"/.workrc.bash
 
-
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+	. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 export NIX_SHELL_PRESERVE_PROMPT=true
@@ -325,8 +325,11 @@ kind: Config
 current-context: ""
 EOF
 export DIRENV_LOG_FORMAT=
-eval "$(direnv hook bash)"
 export SHELL=$(which bash)
+# ensure compatibility tmux <-> direnv
+if [ -n "$TMUX" ] && [ -n "$DIRENV_DIR" ]; then
+	unset "${!DIRENV_@}" # unset env vars starting with DIRENV_
+fi
 . "$HOME/.cargo/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"

@@ -1,8 +1,8 @@
 .config/*
 !.config/home-manager
 !.config/nix
-!.config/nvim-lua-user
-!.config/astronvim4
+!.config/nvim
+!.config/ghostty
 
 .ssh/*
 !.ssh/config
