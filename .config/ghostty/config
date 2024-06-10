@@ -1231,7 +1231,7 @@ macos-non-native-fullscreen = false
 # if this is enabled. macOS 14 does not have this issue.
 #
 # This option only applies to new windows when changed.
-macos-titlebar-tabs = false
+#macos-titlebar-tabs = false
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input

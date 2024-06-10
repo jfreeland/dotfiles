@@ -147,21 +147,18 @@ if [[ -d "$HOME/.nix-profile/share/bash-completion/completions" ]]; then
 fi
 [[ -f "/usr/local/etc/bash_completion" ]] && source /usr/local/etc/bash_completion
 [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]] && source /usr/local/etc/profile.d/bash_completion.sh
-if type brew &>/dev/null
-then
-  export HOMEBREW_PREFIX="$(brew --prefix)"
-  [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-  [[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
-  [[ -f "${HOMEBREW_PREFIX}/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/share/kube-ps1.sh"
-  [[ -f "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh"
-  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-  then
-    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
-    do
-      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-    done
-  fi
+if type brew &>/dev/null; then
+	export HOMEBREW_PREFIX="$(brew --prefix)"
+	[[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+	[[ -f "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]] && source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+	[[ -f "${HOMEBREW_PREFIX}/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/share/kube-ps1.sh"
+	[[ -f "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh" ]] && source "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh"
+	if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+		source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+		for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+			[[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+		done
+	fi
 fi
 
 [[ -x "$(command -v devbox)" ]] && source <(devbox completion bash)
@@ -333,3 +330,4 @@ fi
 . "$HOME/.cargo/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"
+eval "$(direnv hook bash)"
