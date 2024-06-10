@@ -2,6 +2,7 @@
 !.config/home-manager
 !.config/nix
 !.config/nvim
+.config/nvim/lazy-lock.json
 !.config/ghostty
 
 .ssh/*
