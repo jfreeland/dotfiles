@@ -48,7 +48,7 @@ brew "cmake"
 brew "coreutils"
 brew "ctags"
 brew "ctlptl"
-brew "curl"
+brew "curl", link: true, force: true, args: ["HEAD"]
 brew "cw"
 #brew "dapr-cli" # arch -arm64 brew install dapr/tap/dapr-cli
 brew "dasel"
@@ -113,6 +113,7 @@ brew "kubernetes-cli"
 brew "lazygit"
 #brew "libpq"
 brew "localstack/tap/localstack-cli"
+brew "llm"
 brew "lua"
 brew "mas"
 brew "mdcat"
@@ -272,7 +273,7 @@ cask "wireshark"
 mas "Amphetamine", id: 937984704
 mas "Clocker", id: 1056643111
 mas "GIPHY Capture", id: 668208984
-mas "Hidden Bar", id: 1452453066
+#mas "Hidden Bar", id: 1452453066
 mas "Magnet", id: 441258766
 mas "UTC Time", id: 1538245904
 mas "WireGuard", id: 1451685025
