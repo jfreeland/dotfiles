@@ -16,6 +16,13 @@
 #     font-family = ""
 #     font-family = "My Favorite Font"
 #
+# Setting any of these as CLI arguments will automatically clear the
+# values set in configuration files so you don't need to specify
+# `--font-family=""` before setting a new value. You only need to specify
+# this within config files if you want to clear previously set values in
+# configuration files or on the CLI if you want to clear values set on the
+# CLI.
+#
 # Changing this configuration at runtime will only affect new terminals, i.e.
 # new windows, tabs, etc.
 font-family = "JetBrainsMono Nerd Font Mono"
@@ -511,6 +518,13 @@ cursor-opacity = 1
 # a prompt, regardless of this configuration. You can disable that behavior
 # by specifying `shell-integration-features = no-cursor` or disabling shell
 # integration entirely.
+#
+# Valid values are:
+#
+#   * `block`
+#   * `bar`
+#   * `underline`
+#
 cursor-style = block
 
 # Sets the default blinking state of the cursor. This is just the default
@@ -524,6 +538,13 @@ cursor-style = block
 # (AT&T cursor blink) as an alternate approach to turning blinking on/off. If
 # this is set to any value other than null, DEC mode 12 will be ignored but
 # `DECSCUSR` will still be respected.
+#
+# Valid values are:
+#
+#   * `` (blank)
+#   * `true`
+#   * `false`
+#
 cursor-style-blink =
 
 # The color of the text under the cursor. If this is not set, a default will
@@ -568,6 +589,14 @@ mouse-hide-while-typing = true
 #
 # If you always want shift to extend mouse selection even if the program
 # requests otherwise, set this to `never`.
+#
+# Valid values are:
+#
+#   * `true`
+#   * `false`
+#   * `always`
+#   * `never`
+#
 mouse-shift-capture = false
 
 # Multiplier for scrolling distance with the mouse wheel. Any value less
@@ -582,9 +611,6 @@ mouse-scroll-multiplier = 1
 # The opacity level (opposite of transparency) of the background. A value of
 # 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
 # or greater than 1 will be clamped to the nearest valid value.
-#
-# Changing this value at runtime (and reloading config) will only affect new
-# windows, tabs, and splits.
 background-opacity = 1
 
 # A positive value enables blurring of the background when background-opacity
@@ -606,7 +632,13 @@ background-blur-radius = 0
 # valid value.
 unfocused-split-opacity = 0.7
 
+# The color to dim the unfocused split. Unfocused splits are dimmed by
+# rendering a semi-transparent rectangle over the split. This sets the color of
+# that rectangle and can be used to carefully control the dimming effect.
+#
+# This will default to the background color.
 unfocused-split-fill =
+
 # The command to run, usually a shell. If this is not an absolute path, it'll
 # be looked up in the `PATH`. If this is not set, a default will be looked up
 # from your system. The rules for the default lookup are:
@@ -622,6 +654,8 @@ unfocused-split-fill =
 # If you're using the `ghostty` CLI there is also a shortcut to run a command
 # with arguments directly: you can use the `-e` flag. For example: `ghostty -e
 # fish --with --custom --args`.
+# `gtk-single-instance = false` (no matter what) to ensure that a new
+# instance is launched and the CLI args are respected.
 command =
 
 # If true, keep the terminal open after the command exits. Normally, the
@@ -759,6 +793,11 @@ working-directory =
 #
 #   * only a single key input is allowed, `ctrl+a+b` is invalid.
 #
+#   * the key input can be prefixed with `physical:` to specify a
+#     physical key mapping rather than a logical one. A physical key
+#     mapping responds to the hardware keycode and not the keycode
+#     translated by any system keyboard layouts. Example: "ctrl+physical:a"
+#
 # Valid modifiers are `shift`, `ctrl` (alias: `control`), `alt` (alias: `opt`,
 # `option`), and `super` (alias: `cmd`, `command`). You may use the modifier
 # or the alias. When debugging keybinds, the non-aliased modifier will always
@@ -796,57 +835,72 @@ working-directory =
 #   * `keybind=clear` will clear all set keybindings. Warning: this
 #     removes ALL keybindings up to this point, including the default
 #     keybindings.
-keybind = super+home=scroll_to_top
-keybind = super+zero=reset_font_size
-keybind = super+t=new_tab
+#
+# A keybind by default causes the input to be consumed. This means that the
+# associated encoding (if any) will not be sent to the running program
+# in the terminal. If you wish to send the encoded value to the program,
+# specify the "unconsumed:" prefix before the entire keybind. For example:
+# "unconsumed:ctrl+a=reload_config"
+keybind = super+page_up=scroll_page_up
+keybind = super+physical:four=goto_tab:4
+keybind = super+shift+down=jump_to_prompt:1
+keybind = super+shift+w=close_window
 keybind = super+shift+left_bracket=previous_tab
-keybind = super+right_bracket=goto_split:next
+keybind = super+alt+i=inspector:toggle
+keybind = super+w=close_surface
+keybind = super+physical:eight=goto_tab:8
+keybind = super+alt+right=goto_split:right
+keybind = shift+up=adjust_selection:up
+keybind = super+enter=toggle_fullscreen
+keybind = super+t=new_tab
 keybind = super+c=copy_to_clipboard
+keybind = super+shift+right_bracket=next_tab
+keybind = super+physical:one=goto_tab:1
+keybind = shift+left=adjust_selection:left
+keybind = super+equal=increase_font_size:1
+keybind = shift+page_up=adjust_selection:page_up
+keybind = super+physical:three=goto_tab:3
+keybind = super+d=new_split:right
+keybind = super+ctrl+down=resize_split:down,10
+keybind = shift+end=adjust_selection:end
+keybind = super+plus=increase_font_size:1
+keybind = super+q=quit
+keybind = super+home=scroll_to_top
+keybind = super+ctrl+left=resize_split:left,10
+keybind = super+ctrl+up=resize_split:up,10
+keybind = super+shift+up=jump_to_prompt:-1
+keybind = shift+right=adjust_selection:right
+keybind = super+comma=open_config
+keybind = super+shift+comma=reload_config
+keybind = super+minus=decrease_font_size:1
+keybind = shift+page_down=adjust_selection:page_down
+keybind = super+a=select_all
+keybind = alt+shift+equal=equalize_splits
 keybind = super+shift+enter=toggle_split_zoom
 keybind = super+alt+down=goto_split:bottom
-keybind = super+shift+j=write_scrollback_file
-keybind = super+alt+i=inspector:toggle
-keybind = super+shift+w=close_window
-keybind = super+shift+right_bracket=next_tab
-keybind = super+page_down=scroll_page_down
-keybind = super+alt+right=goto_split:right
-keybind = super+alt+left=goto_split:left
-keybind = alt+shift+equal=equalize_splits
 keybind = super+ctrl+f=toggle_fullscreen
-keybind = super+physical:eight=goto_tab:8
-keybind = super+ctrl+down=resize_split:down,10
-keybind = super+left_bracket=goto_split:previous
-keybind = super+equal=increase_font_size:1
-keybind = super+comma=open_config
-keybind = super+k=clear_screen
-keybind = super+physical:five=goto_tab:5
-keybind = super+physical:two=goto_tab:2
-keybind = super+physical:seven=goto_tab:7
-keybind = super+physical:four=goto_tab:4
-keybind = super+physical:three=goto_tab:3
-keybind = super+physical:six=goto_tab:6
-keybind = super+plus=increase_font_size:1
-keybind = super+shift+up=jump_to_prompt:-1
-keybind = super+page_up=scroll_page_up
+keybind = super+ctrl+right=resize_split:right,10
+keybind = super+alt+shift+j=write_scrollback_file:open
+keybind = shift+down=adjust_selection:down
 keybind = super+n=new_window
-keybind = super+shift+comma=reload_config
+keybind = super+alt+left=goto_split:left
+keybind = super+page_down=scroll_page_down
 keybind = super+alt+shift+w=close_all_windows
 keybind = super+alt+up=goto_split:top
-keybind = super+shift+d=new_split:down
-keybind = super+ctrl+up=resize_split:up,10
-keybind = super+ctrl+left=resize_split:left,10
-keybind = super+ctrl+right=resize_split:right,10
-keybind = super+v=paste_from_clipboard
-keybind = super+shift+down=jump_to_prompt:1
-keybind = super+w=close_surface
-keybind = super+minus=decrease_font_size:1
-keybind = super+end=scroll_to_bottom
-keybind = super+enter=toggle_fullscreen
-keybind = super+physical:one=goto_tab:1
-keybind = super+a=select_all
-keybind = super+d=new_split:right
-keybind = super+q=quit
+keybind = super+left_bracket=goto_split:previous
 keybind = super+physical:nine=goto_tab:9
+keybind = super+right_bracket=goto_split:next
+keybind = super+end=scroll_to_bottom
+keybind = super+shift+j=write_scrollback_file:paste
+keybind = super+shift+d=new_split:down
+keybind = super+zero=reset_font_size
+keybind = super+physical:five=goto_tab:5
+keybind = shift+home=adjust_selection:home
+keybind = super+physical:seven=goto_tab:7
+keybind = super+k=clear_screen
+keybind = super+physical:two=goto_tab:2
+keybind = super+physical:six=goto_tab:6
+keybind = super+v=paste_from_clipboard
 
 # Window padding. This applies padding between the terminal cells and the
 # window border. The `x` option applies to the left and right padding and the
@@ -902,8 +956,17 @@ window-inherit-working-directory = false
 # configuration `font-size` will be used.
 window-inherit-font-size = true
 
-# If false, windows won't have native decorations, i.e. titlebar and
-# borders.
+# Valid values:
+#
+#   * `true`
+#   * `false` - windows won't have native decorations, i.e. titlebar and
+#      borders. On MacOS this also disables tabs and tab overview.
+#
+# The "toggle_window_decoration" keybind action can be used to create
+# a keybinding to toggle this setting at runtime.
+#
+# Changing this configuration in your configuration and reloading will
+# only affect new windows. Existing windows will not be affected.
 window-decoration = true
 
 # The font that will be used for the application's window and tab titles.
@@ -1007,20 +1070,17 @@ window-step-resize = false
 # This configuration currently only works with GTK.
 window-new-tab-position = current
 
-# When enabled, the full GTK titlebar is displayed instead of your window
-# manager's simple titlebar. The behavior of this option will vary with your
-# window manager.
-#
-# This option does nothing when `window-decoration` is false or when running
-# under macOS.
-#
-# Changing this value at runtime and reloading the configuration will only
-# affect new windows.
-gtk-titlebar = true
-
+focus-follows-mouse = false
 # Whether to allow programs running in the terminal to read/write to the
 # system clipboard (OSC 52, for googling). The default is to allow clipboard
 # reading after prompting the user and allow writing unconditionally.
+#
+# Valid values are:
+#
+#   * `ask`
+#   * `allow`
+#   * `deny`
+#
 clipboard-read = ask
 
 clipboard-write = allow
@@ -1113,7 +1173,7 @@ shell-integration = detect
 # The format of this is a list of features to enable separated by commas. If
 # you prefix a feature with `no-` then it is disabled. If you omit a feature,
 # its default value is used, so you must explicitly disable features you don't
-# want.
+# want. You can also use `true` or `false` to turn all features on or off.
 #
 # Available features:
 #
@@ -1215,23 +1275,30 @@ custom-shader-animation = true
 #
 macos-non-native-fullscreen = false
 
-# If `true`, places the tab bar in the titlebar for tabbed windows.
+# The style of the macOS titlebar. Available values are: "native",
+# "transparent", and "tabs".
 #
-# When this is true, the titlebar will also always appear even when
-# fullscreen (native fullscreen) with only one tab. This is not considered
-# a bug but if you'd like to improve this behavior then I'm open to it and
-# please contribute to the project.
+# The "native" style uses the native macOS titlebar with zero customization.
+# The titlebar will match your window theme (see `window-theme`).
 #
-# This option intercepts the native tab bar view from macOS and forces it to use
-# different positioning. Because of this, it might be buggy or break entirely if
-# macOS changes the way its native tab bar view is constructed or managed.
-# This has been tested on macOS 14.
+# The "transparent" style is the same as "native" but the titlebar will
+# be transparent and allow your window background color to come through.
+# This makes a more seamless window appearance but looks a little less
+# typical for a macOS application and may not work well with all themes.
 #
-# For macOS 13 users: saved window state will not restore tabs correctly
-# if this is enabled. macOS 14 does not have this issue.
+# The "tabs" style is a completely custom titlebar that integrates the
+# tab bar into the titlebar. This titlebar always matches the background
+# color of the terminal. There are some limitations to this style:
+# On macOS 13 and below, saved window state will not restore tabs correctly.
+# macOS 14 does not have this issue and any other macOS version has not
+# been tested.
 #
-# This option only applies to new windows when changed.
-#macos-titlebar-tabs = false
+# The default value is "transparent". This is an opinionated choice
+# but its one I think is the most aesthetically pleasing and works in
+# most cases.
+#
+# Changing this option at runtime only applies to new windows.
+macos-titlebar-style = transparent
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -1244,6 +1311,11 @@ macos-non-native-fullscreen = false
 #
 # This does not work with GLFW builds.
 macos-option-as-alt = false
+
+# Whether to enable the macOS window shadow. The default value is true.
+# With some window managers and window transparency settings, you may
+# find false more visually appealing.
+macos-window-shadow = true
 
 # Put every surface (tab, split, window) into a dedicated Linux cgroup.
 #
@@ -1308,6 +1380,17 @@ linux-cgroup-hard-fail = false
 # Note that debug builds of Ghostty have a separate single-instance ID
 # so you can test single instance without conflicting with release builds.
 gtk-single-instance = desktop
+
+# When enabled, the full GTK titlebar is displayed instead of your window
+# manager's simple titlebar. The behavior of this option will vary with your
+# window manager.
+#
+# This option does nothing when `window-decoration` is false or when running
+# under macOS.
+#
+# Changing this value at runtime and reloading the configuration will only
+# affect new windows.
+gtk-titlebar = true
 
 # Determines the side of the screen that the GTK tab bar will stick to.
 # Top, bottom, left, and right are supported. The default is top.
