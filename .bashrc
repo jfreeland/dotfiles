@@ -4,6 +4,7 @@
 # ln -s /dev/null /Users/josephfreeland/.local/state/nvim/lsp.log
 
 #set -x
+#trap 'echo -n $(/opt/homebrew/bin/gdate +"%T.%3N") && echo' DEBUG
 
 # If not running interacative don't do anything
 [ -z "$PS1" ] && return
@@ -330,5 +331,4 @@ fi
 . "$HOME/.cargo/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"
-eval "$(atuin init bash)"
 eval "$(direnv hook bash)"
