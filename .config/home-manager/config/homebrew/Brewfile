@@ -200,6 +200,7 @@ cask "1password-cli"
 #cask "ccmenu" # waypoint?
 #cask "charles"
 #cask "cleanshot" # screenflow
+cask "cursor"
 cask "discord"
 #cask "daisydisk"
 #cask "dash"
