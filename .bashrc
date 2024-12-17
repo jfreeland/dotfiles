@@ -167,6 +167,7 @@ fi
 [[ -x "$(command -v kubectl)" ]] && source <(kubectl completion bash)
 [[ -x "$(command -v helm)" ]] && source <(helm completion bash)
 [[ -x "$(command -v tilt)" ]] && source <(tilt completion bash)
+[[ -x "$(command -v ng)" ]] && source <(ng completion script)
 
 [[ -f '/usr/local/bin/aws_completer' ]] && complete -C '/usr/local/bin/aws_completer' aws
 [[ -f '/usr/bin/aws_completer' ]] && complete -C '/usr/bin/aws_completer' aws
