@@ -1,4 +1,7 @@
 # https://github.com/jacobbednarz/j/blob/main/config/homebrew/Brewfile
+#
+# Others:
+# go install github.com/Lifailon/lazyjournal@latest
 
 tap "aws/tap"
 tap "azure/functions"
@@ -174,6 +177,7 @@ brew "tmux"
 brew "tmux-mem-cpu-load"
 #brew "tmuxinator"
 #brew "upx"
+brew "uv"
 #brew "vegeta"
 #brew "vim"
 #brew "vlt"

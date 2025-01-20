@@ -4,6 +4,7 @@
 # ln -s /dev/null /Users/josephfreeland/.local/state/nvim/lsp.log
 
 #set -x
+# rm /opt/homebrew/etc/bash_completion.d/multipass
 #trap 'echo -n $(/opt/homebrew/bin/gdate +"%T.%3N") && echo' DEBUG
 
 # If not running interacative don't do anything
