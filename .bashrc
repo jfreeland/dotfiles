@@ -4,11 +4,16 @@
 # ln -s /dev/null /Users/josephfreeland/.local/state/nvim/lsp.log
 
 #set -x
+#DEBUG=1
 # rm /opt/homebrew/etc/bash_completion.d/multipass
 #trap 'echo -n $(/opt/homebrew/bin/gdate +"%T.%3N") && echo' DEBUG
 
 # If not running interacative don't do anything
 [ -z "$PS1" ] && return
+
+function print_time {
+	echo "start: $(gdate "+%T.%N")"
+}
 
 # ssh-agent
 function sshagent_findsockets {
@@ -76,8 +81,10 @@ function sshagent_init {
 	unset agentsocket
 }
 
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 sshagent_init
 
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 if [ -f "${HOME}/.gpg-agent-info" ]; then
 	. "${HOME}/.gpg-agent-info"
 	export GPG_AGENT_INFO
@@ -87,11 +94,13 @@ fi
 # environment
 
 # Ghostty shell integration
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 if [ -n "$GHOSTTY_RESOURCES_DIR" ]; then
 	builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
 fi
 
 ## use vi mode for bash
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
@@ -99,6 +108,7 @@ bind -m vi-insert 'Control-l: clear-screen'
 stty werase undef
 bind '\C-w:unix-filename-rubout'
 
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export CLICOLOR=1
 # TODO: https://gehrcke.de/2022/11/gcloud-on-python-3-10-module-collections-has-no-attribute-mapping/
@@ -137,9 +147,11 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # editor
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 export EDITOR=$(which nvim)
 
 # completions
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 shopt -s nullglob
 # TODO: I use [[]] and [] inconsistently.
 if [[ -d "$HOME/.nix-profile/share/bash-completion/completions" ]]; then
@@ -181,6 +193,7 @@ fi
 [[ -f '/usr/share/doc/fzf/examples/key-bindings.bash' ]] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # nix fzf
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"
 	source "$(fzf-share)/completion.bash"
@@ -225,6 +238,7 @@ git_prompt() {
 	fi
 }
 ## TODO: add kube-ps1 and kube-tmuxp back in the mix?
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 if [[ $HOSTNAME =~ "USM" ]]; then
 	PS1_USER="joey"
 	PS1_HOST="work"
@@ -301,9 +315,11 @@ function dirdiff() {
 }
 
 # include private config
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 [[ -f "$HOME/.private.bash" ]] && source "$HOME"/.private.bash
 
 # include work config
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 [[ -f "$HOME/.workrc.bash" ]] && source "$HOME"/.workrc.bash
 
 # Nix
@@ -316,6 +332,7 @@ export NIX_SHELL_PRESERVE_PROMPT=true
 # unloading" and I don't have time to dig right now.
 # https://jackma.com/2019/11/23/one-kubectl-context-per-shell-session/
 # kubeconfig per session
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 file="$(mktemp -t "kubectx.XXXXXX")"
 export KUBECONFIG=~/.kube/config
 export KUBECONFIG="${file}:${KUBECONFIG}"
@@ -333,4 +350,5 @@ fi
 . "$HOME/.cargo/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
 eval "$(direnv hook bash)"
