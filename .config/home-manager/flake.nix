@@ -43,7 +43,7 @@
 
             imports = [
               ./config/home-manager/direnv.nix
-              ./config/home-manager/fzf.nix
+              #./config/home-manager/fzf.nix
               ./config/home-manager/gnupg.nix
               ./config/home-manager/homebrew.nix
               # ./config/home-manager/iterm2.nix
