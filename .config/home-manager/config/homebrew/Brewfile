@@ -1,7 +1,5 @@
+# There's probably some new cool stuff I should check out at
 # https://github.com/jacobbednarz/j/blob/main/config/homebrew/Brewfile
-#
-# Others:
-# go install github.com/Lifailon/lazyjournal@latest
 
 tap "aws/tap"
 tap "azure/functions"
@@ -43,6 +41,7 @@ brew "bash-completion@2"
 #brew "bat"
 #brew "broot"
 brew "binutils"
+brew "bruno"
 brew "btop"
 brew "cfssl"
 brew "cheat"
@@ -111,6 +110,7 @@ brew "jo"
 brew "jq"
 #brew "jupyter"
 brew "k9s"
+brew "kaskade"
 brew "keychain"
 brew "kind"
 brew "kns"
@@ -120,6 +120,7 @@ brew "kubie"
 #brew "int128/kubelogin/kubelogin"
 brew "kubernetes-cli"
 brew "lazygit"
+brew "lazyjournal"
 #brew "libpq"
 brew "localstack/tap/localstack-cli"
 brew "llm"
