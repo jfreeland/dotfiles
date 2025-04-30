@@ -341,7 +341,7 @@ apiVersion: v1
 kind: Config
 current-context: ""
 EOF
-export DIRENV_LOG_FORMAT=
+export DIRENV_LOG_FORMAT=""
 export SHELL=$(which bash)
 # ensure compatibility tmux <-> direnv
 if [ -n "$TMUX" ] && [ -n "$DIRENV_DIR" ]; then

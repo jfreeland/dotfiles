@@ -4,6 +4,7 @@
 !.config/nvim
 .config/nvim/lazy-lock.json
 !.config/ghostty
+!.config/direnv
 
 .ssh/*
 !.ssh/config

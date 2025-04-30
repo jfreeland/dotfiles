@@ -35,6 +35,7 @@ git clone https://github.com/AstroNvim/template ~/.config/nvim
 ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/astrocore.lua ~/.config/nvim/lua/plugins/
 ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/community.lua ~/.config/nvim/lua/plugins/
 ln -s ~/configs/dotfiles/.config/astronvim4/lua/plugins/for-me.lua ~/.config/nvim/lua/plugins/
+ln -s ~/configs/dotfiles/.config/direnv ~/.config/direnv
 # setup nvim wakatime
 # setup devbox
 sudo chsh -s (path to newer bash) "$USER"
