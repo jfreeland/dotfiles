@@ -137,7 +137,7 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # path
-export PATH=~/.atuin/bin:~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+export PATH=~/.atuin/bin:~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH
 
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
