@@ -341,12 +341,12 @@ apiVersion: v1
 kind: Config
 current-context: ""
 EOF
-export DIRENV_LOG_FORMAT=""
 export SHELL=$(which bash)
 # ensure compatibility tmux <-> direnv
 if [ -n "$TMUX" ] && [ -n "$DIRENV_DIR" ]; then
 	unset "${!DIRENV_@}" # unset env vars starting with DIRENV_
 fi
+export DIRENV_LOG_FORMAT=""
 . "$HOME/.cargo/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"
