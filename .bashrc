@@ -322,6 +322,10 @@ if [[ "$DEBUG" == "1" ]]; then print_time; fi
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 [[ -f "$HOME/.workrc.bash" ]] && source "$HOME"/.workrc.bash
 
+# include extra functions
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
+[[ -d "$HOME/configs/dotfiles/extras" ]] && for file in "$HOME"/configs/dotfiles/extras/*.sh; do source "$file"; done
+
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 	. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -352,3 +356,5 @@ export DIRENV_LOG_FORMAT=""
 #eval "$(atuin init bash)"
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 eval "$(direnv hook bash)"
+
+export PATH=/Users/josephfreeland/.groundcover/bin:${PATH}

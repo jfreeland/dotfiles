@@ -8,3 +8,5 @@
 
 .ssh/*
 !.ssh/config
+
+venv
