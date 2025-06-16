@@ -117,6 +117,7 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --follow --glob "!{.git,node_modules,vendor}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=auto
+export GOBIN="$HOME/go/bin"
 export GO_SRC_DIR="$HOME/go/src"
 # TODO: Should be conditional.  I've let containers reduce my exposure surface.
 #export GOOS=$(uname -s)
