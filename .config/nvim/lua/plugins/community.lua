@@ -4,7 +4,7 @@ return {
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.go" },
-  -- { import = "astrocommunity.pack.helm" },
+  { import = "astrocommunity.pack.helm" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
