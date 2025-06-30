@@ -38,11 +38,11 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-        autoformat_enabled = true,       -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
-        cmp_enabled = true,              -- enable completion at start
-        autopairs_enabled = true,        -- enable autopairs at start
-        diagnostics_mode = 3,            -- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)
-        icons_enabled = true,            -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+        autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+        cmp_enabled = true, -- enable completion at start
+        autopairs_enabled = true, -- enable autopairs at start
+        diagnostics_mode = 3, -- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)
+        icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
         ui_notifications_enabled = true, -- disable notifications when toggling UI elements
         go_echo_command_info = 0,
       },
@@ -57,6 +57,9 @@ return {
         -- navigate buffer tabs with `H` and `L`
         L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+
+        -- turn off LSP with `<Leader>lx`
+        ["<Leader>lx"] = { "<cmd>LspStop<cr>", desc = "Stop current LSP" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {

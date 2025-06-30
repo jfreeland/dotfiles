@@ -20,8 +20,11 @@ grapheme-width-method = unicode
 #theme = "iTerm2 Default"
 theme = "GitHub Dark"
 #background = #282c34
-# https://github.com/AstroNvim/astrotheme/blob/main/lua/astrotheme/palettes/astrodark.lua#L42C14-L42C21
-background = #1A1D23
+#background = #1A1D23
+#background = #000000
+background = #101010
+# TODO: why doesn't this work?
+window-titlebar-background = #1A1D23
 foreground = #ffffff
 selection-invert-fg-bg = false
 cursor-opacity = 1
