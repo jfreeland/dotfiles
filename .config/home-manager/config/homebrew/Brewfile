@@ -53,6 +53,7 @@ brew "ctags"
 brew "ctlptl"
 brew "curl", link: true, force: true, args: ["HEAD"]
 brew "cw"
+brew "d2"
 #brew "dapr-cli" # arch -arm64 brew install dapr/tap/dapr-cli
 brew "dasel"
 brew "diffutils"
