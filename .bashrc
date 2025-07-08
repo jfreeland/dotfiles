@@ -262,6 +262,7 @@ alias cless="less -r"
 alias cmore="more -r"
 alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias dnswtf="scutil --dns"
 alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
