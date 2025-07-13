@@ -263,6 +263,7 @@ alias cmore="more -r"
 alias date_tag='date +timestamp_%Y%m%d%H%M%S'
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias dnswtf="scutil --dns"
+alias ifcme="curl -4 ifconfig.me && echo"
 alias kc=kubectl
 alias kctx=kubectx
 alias kns=kubens
