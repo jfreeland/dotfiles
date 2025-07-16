@@ -10,6 +10,18 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    autocmds = {
+      no_yaml_fold = {
+        {
+          event = "FileType",
+          pattern = "yaml",
+          callback = function()
+            vim.opt_local.foldmethod = "indent"
+            vim.opt_local.foldlevel = 99
+          end,
+        },
+      },
+    },
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
@@ -33,6 +45,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        foldlevelstart = 99,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
