@@ -2,6 +2,7 @@
 -- I've grown accustomed to having it around.
 
 local utils = require "astrocore"
+local COPILOT_ENABLED = os.getenv "DISABLE_COPILOT" == nil
 
 return {
   {
@@ -53,39 +54,53 @@ return {
     opts = {},
   },
   {
-    "Exafunction/codeium.vim",
+    "github/copilot.vim",
+    cond = COPILOT_ENABLED,
+    -- build = ":Copilot auth",
     lazy = false,
-    cmd = "Codeium",
-    init = function()
-      vim.g.codeium_enabled = 1
-      vim.g.codeium_disable_bindings = 1
-    end,
     config = function()
-      vim.keymap.set("i", "<C-o>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-;>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-      vim.keymap.set("i", "<c-,>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-      vim.keymap.set("i", "<C-BS>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+      vim.keymap.set("i", "<C-o>", 'copilot#Accept("")', {
+        silent = true,
+        expr = true,
+        replace_keycodes = false,
+      })
     end,
-    keys = {
-      {
-        "<leader>;;",
-        function()
-          vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
-          utils.notify("Codeium " .. (vim.g.codeium_enabled == 0 and "Disabled" or "Enabled"))
-        end,
-        desc = "Toggle Codeium (global)",
-      },
-      {
-        "<leader>;,",
-        function()
-          vim.cmd.Codeium(vim.b.codeium_enabled == 0 and "EnableBuffer" or "DisableBuffer")
-          utils.notify("Codeium (buffer) " .. (vim.b.codeium_enabled == 0 and "Disabled" or "Enabled"))
-        end,
-        desc = "Toggle Codeium (buffer)",
-      },
-    },
     opts = {},
   },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   lazy = false,
+  --   cmd = "Codeium",
+  --   init = function()
+  --     vim.g.codeium_enabled = 1
+  --     vim.g.codeium_disable_bindings = 1
+  --   end,
+  --   config = function()
+  --     vim.keymap.set("i", "<C-o>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
+  --     vim.keymap.set("i", "<c-;>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+  --     vim.keymap.set("i", "<c-,>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+  --     vim.keymap.set("i", "<C-BS>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+  --   end,
+  --   keys = {
+  --     {
+  --       "<leader>;;",
+  --       function()
+  --         vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
+  --         utils.notify("Codeium " .. (vim.g.codeium_enabled == 0 and "Disabled" or "Enabled"))
+  --       end,
+  --       desc = "Toggle Codeium (global)",
+  --     },
+  --     {
+  --       "<leader>;,",
+  --       function()
+  --         vim.cmd.Codeium(vim.b.codeium_enabled == 0 and "EnableBuffer" or "DisableBuffer")
+  --         utils.notify("Codeium (buffer) " .. (vim.b.codeium_enabled == 0 and "Disabled" or "Enabled"))
+  --       end,
+  --       desc = "Toggle Codeium (buffer)",
+  --     },
+  --   },
+  --   opts = {},
+  -- },
   -- https://github.com/cloudlena/dotfiles/blob/523295c1d9afe69df0618fa2881eb805807312e8/nvim/.config/nvim/lua/plugins/diff_directories.lua
   -- TODO: revisit, don't follow this rabit hole right now
   {
