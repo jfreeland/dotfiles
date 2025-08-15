@@ -128,7 +128,7 @@ export GO_SRC_DIR="$HOME/go/src"
 #export GOARCH=$(uname -m)
 export GOPATH="$HOME/go"
 export GOPROXY="proxy.golang.org,direct"
-export GOSUMDB="off"
+export GOSUMDB=sum.golang.org
 export GPG_TTY=$(tty)
 export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
 
