@@ -11,6 +11,7 @@
 import json
 import os
 import sys
+from pprint import pprint
 
 import requests
 from joblib import Parallel, delayed
@@ -66,6 +67,7 @@ if __name__ == "__main__":
         devices_table = [
             [
                 "NAME",
+                "STATUS",
                 "ENV",
                 "PURPOSE",
                 "PLATFORM",
@@ -76,8 +78,10 @@ if __name__ == "__main__":
             ]
         ]
         for device in all_devices:
+            # pprint(device)
             row = list()
             row.append(device["name"])
+            row.append(device["status"]["label"])
             row.append(device["custom_fields"]["environment"])
             row.append(device["custom_fields"]["purpose"])
             try:
