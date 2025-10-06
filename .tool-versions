@@ -1,5 +1,5 @@
 terraform 1.12.0
-golang 1.22.3
+golang 1.25.1
 argocd 2.9.1
 elixir 1.15.7
 erlang 26.1.2
@@ -11,3 +11,4 @@ golangci-lint 1.55.2
 nodejs 24.0.2
 python 3.12.4
 postgres 17.5
+terrafrom 1.13.3

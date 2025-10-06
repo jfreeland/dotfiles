@@ -142,7 +142,9 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # path
-export PATH=~/.atuin/bin:~/.dotnet/tools:~/.dapr/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH
+export PATH=~/.atuin/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH
+[[ -x "$(command -v asdf)" ]] && export PATH="$HOME/.asdf/shims:$PATH"
+[[ -x "$(command -v asdf)" ]] && . <(asdf completion bash)
 
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -190,8 +192,6 @@ fi
 [[ -f '/usr/local/bin/aws_completer' ]] && complete -C '/usr/local/bin/aws_completer' aws
 [[ -f '/usr/bin/aws_completer' ]] && complete -C '/usr/bin/aws_completer' aws
 
-[[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME"/.asdf/asdf.sh
-[[ -f "$HOME/.asdf/completions/asdf.bash" ]] && source "$HOME"/.asdf/completions/asdf.bash
 [[ -f "$HOME/.fzf.bash" ]] && source "$HOME"/.fzf.bash
 [[ -f '/opt/homebrew/opt/fzf/shell/completion.bash' ]] && source /opt/homebrew/opt/fzf/shell/completion.bash
 [[ -f '/opt/homebrew/opt/fzf/shell/key-bindings.bash' ]] && source /opt/homebrew/opt/fzf/shell/key-bindings.bash
@@ -244,7 +244,7 @@ git_prompt() {
 }
 ## TODO: add kube-ps1 and kube-tmuxp back in the mix?
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
-if [[ $HOSTNAME =~ "USM" ]]; then
+if [[ $HOSTNAME =~ "Joey" ]]; then
 	PS1_USER="joey"
 	PS1_HOST="work"
 	PS1='$(virtual_env)'"["'$(date +"%H:%M:%S")'"] \[\e]0;${PS1_USER}@${PS1_HOST}: \w\a\]\[\033[01;32m\]${PS1_USER}@${PS1_HOST}\[\033[00m\] : \[\033[01;34m\]\w\[\033[00m\] "'$(git_prompt)$(tf_ws_prompt)$(aws_profile_prompt)$(aws_region_prompt)$(kube_ps1)$(nix_prompt)'" > "
