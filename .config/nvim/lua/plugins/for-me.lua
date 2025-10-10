@@ -109,4 +109,26 @@ return {
     config = function() vim.g.DirDiffExcludes = ".git,.terraform" end,
     opts = {},
   },
+  {
+    "Kicamon/markdown-table-mode.nvim",
+    config = function() require("markdown-table-mode").setup() end,
+  },
+  -- Show hidden files in telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    -- 'opts' is the configuration table passed to require('telescope').setup
+    opts = {
+      -- Set global defaults (e.g., for find_files)
+      defaults = {
+        hidden = true, -- Include hidden files/folders in find_files
+      },
+      pickers = {
+        -- Set picker-specific options (e.g., for live_grep)
+        live_grep = {
+          -- Pass the '--hidden' flag to ripgrep (rg)
+          additional_args = function() return { "--hidden" } end,
+        },
+      },
+    },
+  },
 }

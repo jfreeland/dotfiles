@@ -204,6 +204,7 @@ brew "yarn"
 #brew "yt-dlp"
 brew "yq"
 brew "xq"
+brew "zizmor"
 
 #cask "1password"
 cask "1password-cli"
