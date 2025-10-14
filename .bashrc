@@ -256,11 +256,11 @@ fi
 ls --color=auto &>/dev/null && alias ls='ls --color=auto'
 [[ -x "$(command -v eza)" ]] && alias ls=eza
 
+#alias awsp="source _awsp"
 alias acd=argocd
 alias ag="ag -f"
 alias assume=". assume"
 alias awswhoami="aws sts get-caller-identity"
-#alias awsp="source _awsp"
 alias brewup="ACCEPT_EULA=y brew bundle --global | indent"
 alias cless="less -r"
 alias cmore="more -r"
@@ -273,7 +273,9 @@ alias kctx=kubectx
 alias kns=kubens
 alias ll="ls -lag"
 alias mp=multipass
+alias netshoot="kubectl run -l app=jfreeland-netshoot --image=nicolaka/netshoot --restart=Never --rm -i -t jfreeland-netshoot"
 alias pipup="python -m pip install --upgrade pip"
+alias toolbox="kubectl run -l app=jfreeland-toolbox --image=joeyfreeland/toolbox:latest --restart=Never --rm -i -t jfreeland-toolbox"
 alias vi=nvim
 alias vimdiff="nvim -d"
 alias watch="watch "
