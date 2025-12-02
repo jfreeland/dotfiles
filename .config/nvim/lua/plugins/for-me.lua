@@ -113,20 +113,24 @@ return {
     "Kicamon/markdown-table-mode.nvim",
     config = function() require("markdown-table-mode").setup() end,
   },
-  -- Show hidden files in telescope
+  -- Show hidden files in telescope (including .github)
   {
     "nvim-telescope/telescope.nvim",
-    -- 'opts' is the configuration table passed to require('telescope').setup
     opts = {
-      -- Set global defaults (e.g., for find_files)
       defaults = {
-        hidden = true, -- Include hidden files/folders in find_files
+        hidden = true,
+        file_ignore_patterns = {
+          "%.git/", -- .git directory (repo internals), NOT .github
+          "node_modules/",
+          "%.DS_Store",
+        },
       },
       pickers = {
-        -- Set picker-specific options (e.g., for live_grep)
+        find_files = {
+          find_command = { "fd", "--type", "f", "--hidden", "--no-ignore" },
+        },
         live_grep = {
-          -- Pass the '--hidden' flag to ripgrep (rg)
-          additional_args = function() return { "--hidden" } end,
+          additional_args = function() return { "--hidden", "--no-ignore" } end,
         },
       },
     },

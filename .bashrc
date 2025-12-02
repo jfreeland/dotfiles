@@ -275,6 +275,7 @@ alias ll="ls -lag"
 alias mp=multipass
 alias netshoot="kubectl run -l app=jfreeland-netshoot --image=nicolaka/netshoot --restart=Never --rm -i -t jfreeland-netshoot"
 alias pipup="python -m pip install --upgrade pip"
+alias psql=psql-17
 alias toolbox="kubectl run -l app=jfreeland-toolbox --image=joeyfreeland/toolbox:latest --restart=Never --rm -i -t jfreeland-toolbox"
 alias vi=nvim
 alias vimdiff="nvim -d"
@@ -365,3 +366,7 @@ export DIRENV_LOG_FORMAT=""
 #eval "$(atuin init bash)"
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 eval "$(direnv hook bash)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
