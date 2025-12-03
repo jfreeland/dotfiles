@@ -127,10 +127,10 @@ return {
       },
       pickers = {
         find_files = {
-          find_command = { "fd", "--type", "f", "--hidden", "--no-ignore" },
+          find_command = { "fd", "--type", "f", "--hidden" },
         },
         live_grep = {
-          additional_args = function() return { "--hidden", "--no-ignore" } end,
+          additional_args = function() return { "--hidden" } end,
         },
       },
     },
