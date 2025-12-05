@@ -10,7 +10,7 @@ pulumi 3.116.1
 golangci-lint 2.5.0
 nodejs 24.0.2
 python 3.14.0
-postgres 17.5
+postgres 17.7
 terrafrom 1.13.3
 terraform-docs 0.20.0
 air 1.63.0
