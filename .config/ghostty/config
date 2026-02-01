@@ -30,3 +30,4 @@ selection-invert-fg-bg = false
 cursor-opacity = 1
 cursor-style = block
 window-inherit-working-directory = false
+macos-titlebar-style = tabs

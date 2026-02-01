@@ -41,7 +41,6 @@ brew "btop"
 brew "cfssl"
 brew "chart-testing"
 brew "cheat"
-brew "claude-code"
 brew "cloc"
 #brew "cloud-provider-kind"
 brew "cmake"
@@ -228,6 +227,7 @@ cask "1password-cli"
 #cask "burp-suite" # owasp
 #cask "ccmenu" # waypoint?
 #cask "charles"
+#cask "claude-code"
 #cask "cleanshot" # screenflow
 #cask "cursor"
 #cask "discord"
