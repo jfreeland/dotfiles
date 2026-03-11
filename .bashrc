@@ -131,6 +131,7 @@ export GOPROXY="proxy.golang.org,direct"
 export GOSUMDB=sum.golang.org
 export GPG_TTY=$(tty)
 export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 ## avoid duplicates
 export HISTCONTROL=ignoredups:erasedups
@@ -143,8 +144,9 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # path
 export PATH=~/.atuin/bin:~/go/bin:~/.cargo/bin:~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH
-[[ -x "$(command -v asdf)" ]] && export PATH="$HOME/.asdf/shims:$PATH"
-[[ -x "$(command -v asdf)" ]] && . <(asdf completion bash)
+# end of an era
+#[[ -x "$(command -v asdf)" ]] && export PATH="$HOME/.asdf/shims:$PATH"
+#[[ -x "$(command -v asdf)" ]] && . <(asdf completion bash)
 
 # linuxbrew
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -188,6 +190,7 @@ fi
 [[ -x "$(command -v helm)" ]] && source <(helm completion bash)
 [[ -x "$(command -v tilt)" ]] && source <(tilt completion bash)
 [[ -x "$(command -v ng)" ]] && source <(ng completion script)
+[[ -x "$(command -v ng)" ]] && source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 [[ -f '/usr/local/bin/aws_completer' ]] && complete -C '/usr/local/bin/aws_completer' aws
 [[ -f '/usr/bin/aws_completer' ]] && complete -C '/usr/bin/aws_completer' aws
@@ -205,8 +208,7 @@ if command -v fzf-share >/dev/null; then
 fi
 
 complete -o default -F __start_kubectl kc
-complete -C $(asdf which terraform) terraform
-#complete -C $(asdf which boundary) boundary
+complete -C $(mise which terraform) terraform
 
 # prompt
 aws_profile_prompt() {
@@ -279,6 +281,7 @@ alias toolbox="kubectl run -l app=jfreeland-toolbox --image=joeyfreeland/toolbox
 alias vi=nvim
 alias vimdiff="nvim -d"
 alias watch="watch "
+alias hms="home-manager switch --impure"
 
 # random functions
 function aws-list-instances() {
@@ -365,8 +368,4 @@ export DIRENV_LOG_FORMAT=""
 #eval "$(atuin init bash)"
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 eval "$(direnv hook bash)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-export PATH="/Users/jfreeland/.antigravity/antigravity/bin:$PATH"
+eval "$(mise activate bash)"

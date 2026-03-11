@@ -15,6 +15,8 @@
   outputs = { self, nixpkgs, home-manager, ghostty, ... }:
     let
       system = "aarch64-darwin";  # or "x86_64-darwin" if you are on an Intel-based Mac
+      username = builtins.getEnv "USER";
+      homeDirectory = "/Users/${username}";
     in {
       nixosConfigurations.mysystem = nixpkgs.lib.nixosSystem {
         system = system;
@@ -27,12 +29,12 @@
         ];
       };
 
-      homeConfigurations.jfreeland = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           {
-            home.username = "jfreeland";
-            home.homeDirectory = "/Users/jfreeland";
+            home.username = username;
+            home.homeDirectory = homeDirectory;
             programs.home-manager.enable = true;
             home.stateVersion = "21.11";
 

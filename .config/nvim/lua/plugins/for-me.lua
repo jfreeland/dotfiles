@@ -113,24 +113,22 @@ return {
     "Kicamon/markdown-table-mode.nvim",
     config = function() require("markdown-table-mode").setup() end,
   },
-  -- Show hidden files in telescope (including .github)
+  -- Search hidden files/dirs (like .mise/, .github/) but still respect .gitignore.
+  -- Override AstroNvim's keymaps to pass hidden=true directly at the call site,
+  -- which bypasses any config merge ordering issues with Snacks.nvim.
   {
-    "nvim-telescope/telescope.nvim",
+    "AstroNvim/astrocore",
     opts = {
-      defaults = {
-        hidden = true,
-        file_ignore_patterns = {
-          "%.git/", -- .git directory (repo internals), NOT .github
-          "node_modules/",
-          "%.DS_Store",
-        },
-      },
-      pickers = {
-        find_files = {
-          find_command = { "fd", "--type", "f", "--hidden" },
-        },
-        live_grep = {
-          additional_args = function() return { "--hidden" } end,
+      mappings = {
+        n = {
+          ["<Leader>fw"] = {
+            function() require("snacks").picker.grep { hidden = true } end,
+            desc = "Find words",
+          },
+          ["<Leader>ff"] = {
+            function() require("snacks").picker.files { hidden = true } end,
+            desc = "Find files",
+          },
         },
       },
     },

@@ -1,6 +1,6 @@
-{
+{ config, ... }: {
   xdg.enable     = true;
-  xdg.configHome = "/Users/joey/.config";
-  xdg.dataHome   = "/Users/joey/.local/share";
-  xdg.cacheHome  = "/Users/joey/.cache";
+  xdg.configHome = "${config.home.homeDirectory}/.config";
+  xdg.dataHome   = "${config.home.homeDirectory}/.local/share";
+  xdg.cacheHome  = "${config.home.homeDirectory}/.cache";
 }

@@ -61,11 +61,11 @@ brew "dua-cli"
 #brew "duckdb"
 #brew "duf"
 brew "aws/tap/ec2-instance-selector"
-brew "eks-node-viewer"
+#brew "eks-node-viewer"
 #brew "entr"
 brew "eza"
 #brew "exercism"
-brew "fac"
+#brew "fac"
 brew "fd"
 brew "findutils"
 #brew "flyctl"
@@ -171,7 +171,7 @@ brew "shellcheck"
 brew "shfmt"
 #brew "shopify/shopify/toxiproxy"
 #brew "siege"
-brew "sm"
+#brew "sm"
 brew "socat"
 #brew "speedtest-cli"
 brew "sshuttle"
@@ -309,6 +309,6 @@ cask "vlc"
 #mas "Clocker", id: 1056643111
 #mas "GIPHY Capture", id: 668208984
 #mas "Hidden Bar", id: 1452453066
-mas "Magnet", id: 441258766
+#mas "Magnet", id: 441258766
 mas "UTC Time", id: 1538245904
 #mas "WireGuard", id: 1451685025
