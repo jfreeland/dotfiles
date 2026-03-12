@@ -368,4 +368,4 @@ export DIRENV_LOG_FORMAT=""
 #eval "$(atuin init bash)"
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 eval "$(direnv hook bash)"
-eval "$(mise activate bash)"
+eval "$(mise activate --shims bash)"
