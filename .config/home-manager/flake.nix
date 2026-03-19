@@ -52,7 +52,10 @@
               ./config/home-manager/xdg.nix
               # ./config/home-manager/vscode.nix
               #./config/home-manager/ghostty.nix
-            ];
+            ] ++ (
+              if builtins.pathExists ./work.nix then
+              [ ./work.nix ] else []
+            );
           }
         ];
       };
