@@ -133,6 +133,7 @@ export GPG_TTY=$(tty)
 export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export NODE_OPTIONS="--dns-result-order=ipv4first"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yaml"
 
 ## avoid duplicates
 export HISTCONTROL=ignoredups:erasedups
