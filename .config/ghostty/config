@@ -34,3 +34,4 @@ window-save-state = never
 window-inherit-working-directory = false
 tab-inherit-working-directory = false
 macos-titlebar-style = tabs
+term = xterm-256color

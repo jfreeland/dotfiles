@@ -10,9 +10,10 @@ return {
   { import = "astrocommunity.pack.markdown" },
   -- { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.python" },
-  { import = "astrocommunity.pack.sql" },
+  -- { import = "astrocommunity.pack.sql" }, -- broken on nvim 0.12 (requires non-existent `sqls` lua module); using sqlls via Mason instead
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.typescript" },
   -- { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.test.neotest" },
 }

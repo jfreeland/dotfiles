@@ -3,8 +3,10 @@
 !.config/nix
 !.config/nvim
 .config/nvim/lazy-lock.json
+.config/nvim/lua/plugins/_*
 !.config/ghostty
 !.config/direnv
+!.config/nvim/lua/plugins/_sql
 
 .ssh/*
 !.ssh/config
