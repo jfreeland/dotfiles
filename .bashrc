@@ -284,6 +284,7 @@ alias vi=nvim
 alias vimdiff="nvim -d"
 alias watch="watch "
 alias hms="home-manager switch --impure"
+alias gvi="nvim -p \$(git diff --name-only)"
 
 # random functions
 function aws-list-instances() {
