@@ -14,6 +14,7 @@ ln -s configs/dotfiles/.config .
 ln -s configs/dotfiles/.git-template .
 ln -s configs/dotfiles/.ssh .
 ln -s configs/dotfiles/.tmux .
+ln -s configs/dotfiles/.claude .
 ln -s configs/dotfiles/.tmux.conf .
 # add ssh key to agent and then
 git clone git@github.com:jfreeland/private.git configs/private

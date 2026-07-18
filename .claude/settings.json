@@ -1,0 +1,49 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": [
+      "mcp__codegraph__*"
+    ]
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph prompt-hook"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true
+}
