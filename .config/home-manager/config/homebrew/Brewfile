@@ -134,6 +134,7 @@ brew "localstack/tap/localstack-cli", trusted: true
 brew "llm"
 brew "lua"
 brew "markdownlint-cli"
+brew "magic-wormhole"
 brew "mas"
 brew "mdcat"
 brew "mike-engel/jwt-cli/jwt-cli"
