@@ -1,45 +1,24 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 -- Customize Treesitter
+-- --------------------
+-- Treesitter customizations are handled with AstroCore
+-- as nvim-treesitter simply provides a download utility for parsers
 
 ---@type LazySpec
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-    opts = {
-      highlight = { enable = true },
+  "AstroNvim/astrocore",
+  ---@type AstroCoreOpts
+  opts = {
+    treesitter = {
+      highlight = true, -- enable/disable treesitter based highlighting
+      indent = true, -- enable/disable treesitter based indentation
+      auto_install = true, -- enable/disable automatic installation of detected languages
       ensure_installed = {
-        -- System & Config
-        "bash",
         "lua",
         "vim",
-        "vimdoc",
-        -- Web Development
-        "html",
-        "css",
-        "scss",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        "yaml",
-        -- Backend
-        "go",
-        "python",
-        "sql",
-        -- DevOps/Infrastructure
-        "dockerfile",
-        "terraform",
-        "hcl",
-        "helm",
-        -- Documentation
-        "markdown",
-        "markdown_inline",
+        -- add more arguments for adding more treesitter parsers
       },
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    branch = "main", -- Use main branch, not master (master is frozen)
   },
 }

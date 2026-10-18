@@ -1,3 +1,5 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 -- Customize Mason
 
 ---@type LazySpec
@@ -11,10 +13,8 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
-        "sqlls",
 
         -- install formatters
-        "prettier",
         "stylua",
 
         -- install debuggers
@@ -25,9 +25,4 @@ return {
       },
     },
   },
-
-  -- mason-null-ls auto-registers every Mason-installed tool against its
-  -- filetype with no arguments. For sqlfluff that means `sqlfluff lint` with
-  -- no --dialect, which errors. Disable its auto-setup; we don't use it.
-  { "jay-babu/mason-null-ls.nvim", enabled = false },
 }

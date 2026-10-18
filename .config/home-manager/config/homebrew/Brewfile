@@ -1,24 +1,26 @@
 # There's probably some new cool stuff I should check out at
 # https://github.com/jacobbednarz/j/blob/main/config/homebrew/Brewfile
 
-tap "aws/tap", trusted: true
 #tap "azure/functions"
 #tap "blendle/blendle"
-tap "clok/sm", trusted: true
-tap "common-fate/granted", trusted: true
 #tap "fluxcd/tap"
-tap "go-delve/delve", trusted: true
-tap "hashicorp/tap", trusted: true
-#tap "homebrew/core"
 #tap "homebrew/bundle"
+#tap "homebrew/core"
 #tap "homebrew/services"
 #tap "humanlogio/homebrew-tap"
 #tap "lucagrulla/tap"
-#tap "mkchoi212/fac", "https://github.com/mkchoi212/fac.git"
 #tap "microsoft/mssql-release", "https://github.com/Microsoft/homebrew-mssql-release"
+#tap "mkchoi212/fac", "https://github.com/mkchoi212/fac.git"
 #tap "mutagen-io/mutagen"
 #tap "rs/tap"
 #tap "shopify/shopify"
+tap "aws/tap", trusted: true
+tap "clok/sm", trusted: true
+tap "common-fate/granted", trusted: true
+tap "go-delve/delve", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "homebrew/cask", trusted: true
+tap "jsdelivr/globalping", trusted: true
 
 #brew "act"
 #brew "actionlint"
@@ -29,7 +31,6 @@ brew "asdf"
 #brew "aws-cdk"
 #brew "aws-sam-cli"
 brew "awscli"
-#brew "azure-cli"
 #brew "azure-functions-core-tools@4"
 brew "bash"
 brew "bash-completion@2"
@@ -83,6 +84,7 @@ brew "gpg2"
 brew "git-flow"
 #brew "gitleaks"
 brew "glances"
+brew "globalping"
 #brew "glow"
 #brew "gobuffalo/tap/buffalo"
 #brew "gomplate"
@@ -92,6 +94,7 @@ brew "gnu-sed"
 brew "gnu-tar"
 #brew "graphviz"
 brew "grpcurl"
+brew "herdr"
 brew "hey"
 brew "htop"
 brew "httpie"
@@ -223,6 +226,7 @@ cask "1password-cli"
 #cask "amazon-chime"
 #cask "appcleaner"
 #cask "authy"
+#cask "azure-cli"
 #cask "balenaetcher"
 #cask "blockblock"
 #cask "bloomrpc"
