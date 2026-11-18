@@ -335,10 +335,6 @@ function dirdiff() {
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 [[ -f "$HOME/.private.bash" ]] && source "$HOME"/.private.bash
 
-# include work config
-if [[ "$DEBUG" == "1" ]]; then print_time; fi
-[[ -f "$HOME/.workrc.bash" ]] && source "$HOME"/.workrc.bash
-
 # include extra functions
 if [[ "$DEBUG" == "1" ]]; then print_time; fi
 [[ -d "$HOME/configs/dotfiles/extras" ]] && for file in "$HOME"/configs/dotfiles/extras/*.sh; do source "$file"; done
@@ -362,6 +358,10 @@ apiVersion: v1
 kind: Config
 current-context: ""
 EOF
+
+# include work config (after KUBECONFIG is set so it can append to it)
+if [[ "$DEBUG" == "1" ]]; then print_time; fi
+[[ -f "$HOME/.workrc.bash" ]] && source "$HOME"/.workrc.bash
 export SHELL=$(which bash)
 # ensure compatibility tmux <-> direnv
 if [ -n "$TMUX" ] && [ -n "$DIRENV_DIR" ]; then

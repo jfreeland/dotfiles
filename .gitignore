@@ -16,4 +16,3 @@ venv
 .claude/*
 !.claude/CLAUDE.md
 !.claude/statusline.sh
-!.claude/settings.json
