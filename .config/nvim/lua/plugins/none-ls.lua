@@ -1,10 +1,29 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize None-ls sources
 
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = {
+    {
+      "jay-babu/mason-null-ls.nvim",
+      opts = {
+        handlers = {
+          sqlfluff = function() end, -- skip; it errors without --dialect
+          prettier = function()
+            local null_ls = require "null-ls"
+            null_ls.register(null_ls.builtins.formatting.prettier.with {
+              extra_args = function(params)
+                if vim.tbl_contains({ "typescript", "typescriptreact", "yaml" }, params.ft) then
+                  return { "--single-quote" }
+                end
+                return {}
+              end,
+            })
+          end,
+        },
+      },
+    },
+  },
   opts = function(_, opts)
     -- opts variable is the default configuration table for the setup function call
     -- local null_ls = require "null-ls"
